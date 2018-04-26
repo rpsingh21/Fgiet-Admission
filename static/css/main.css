@@ -2,10 +2,14 @@ body {
     position: relative;
     margin: 0;
     min-height: 100%;
+    background-color: #f8f9fa;
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
-.bg-nav{
-    border-bottom: 1px solid #ddd;
+.navbar{
+    background-color: white;
+}
+.border-bottom{
+    border-bottom: 1px solid #aaa;
 }
 .border-top{
     border-top: 1px solid #aaa
@@ -15,11 +19,15 @@ body {
     padding:0;
 }
 
-.card {
+.card-header b{
+    text-transform: capitalize;
+}
+
+.myCard {
     background-color: #fff;
-    padding: 30px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
-    /*margin-bottom: 4rem;*/
+    padding: 1.5em;
+    padding-bottom: 1em;
+    box-shadow: 0 2px 1em 0 rgba(0, 0, 0, 0.09);
     border: none;
     border-radius: 0px;
 }

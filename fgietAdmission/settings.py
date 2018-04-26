@@ -25,7 +25,7 @@ SECRET_KEY = 'y%p85p8yb)r(o&*r13xths_!vtq$@#&6g0qi1u6&+v^x0owok4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'widget_tweaks',
     'admission',
 ]
 

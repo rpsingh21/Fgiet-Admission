@@ -25,20 +25,20 @@ def upload_location(instance, filename):
 
 # high school details model 
 class HighSchool(models.Model):
-    passingYear = models.CharField(max_length= 16, choices=passing_year)
-    board = models.CharField(max_length = 64)
-    percentageMarks = models.CharField(max_length=3)
-    highResultImage = models.ImageField(upload_to=upload_location)
+    highSchoolPassingYear = models.CharField(max_length= 16, choices=passing_year)
+    highSchoolBoard = models.CharField(max_length = 64)
+    highSchoolPercentageMarks = models.CharField(max_length=3)
+    highSchoolResultImage = models.ImageField(upload_to=upload_location)
 
     def __str__(self):
         return self.board
     
 # Intermediate details model 
 class Intermediate(models.Model):
-    passingYear = models.CharField(max_length= 16, choices=passing_year)
-    board = models.CharField(max_length = 64)
-    percentageMarks = models.CharField(max_length=3)
-    intermeduateResultImage = models.ImageField(upload_to=upload_location)
+    intermediatePassingYear = models.CharField(max_length= 16, choices=passing_year)
+    intermediateBoard = models.CharField(max_length = 64)
+    intermediatePercentageMarks = models.CharField(max_length=3)
+    intermediateResultImage = models.ImageField(upload_to=upload_location)
 
     # marks for diffrent Importent subject
     math = models.IntegerField( default = 0, null = True)
@@ -50,11 +50,11 @@ class Intermediate(models.Model):
 
 # UG or Diploma details fields
 class UgOrDiploma(models.Model):
-    passingYear = models.CharField(max_length= 16, choices=passing_year)
-    board = models.CharField(max_length = 64)
-    branch = models.CharField(max_length = 32)
-    percentageMarks = models.CharField(max_length=3)
-    ugOrDiplomaResultimage = models.ImageField(upload_to=upload_location)
+    ugOrDiplompassingYear = models.CharField(max_length= 16, choices=passing_year)
+    ugOrDiplomBoard = models.CharField(max_length = 64)
+    ugOrDiplomBranch = models.CharField(max_length = 32)
+    ugOrDiplomPercentageMarks = models.CharField(max_length=3)
+    ugOrDiplomResultimage = models.ImageField(upload_to=upload_location)
 
     def __str__(self):
         return self.board

@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="media/img/fgiet.png" sizes="60x55" type="image/png">
     <title>{% block title %}{% endblock %} | Fgiet Admissoin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
@@ -14,10 +15,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-nav bg-light">
+    <nav class="navbar navbar-expand-lg border-bottom navbar-light">
         <a class="navbar-brand" href="#">
-            <img src="https://getbootstrap.com//assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
-                alt=""> Bootstrap
+            <img src="media/img/fgiet.png" width="40" height="38" class="d-inline-block"
+                alt="fgiet"> Admissoin Cell
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -49,11 +50,11 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container my-4">
         {% block content %}
         {% endblock %}
     </div>
-    <nav class="navbar navbar-light border-top bg-light">
+    <nav class="navbar navbar-light border-top">
         <div class="center">
             <p>This website created by Compuet Science and Engg</p>
         </div>

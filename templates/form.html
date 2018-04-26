@@ -1,16 +1,130 @@
 {% extends "base.html" %}
+{% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block title %}{{ title  }}{% endblock %}
 {% block content %}
-<div class="card">
+<div class="myCard mb-3">
+    <div class="center border rounded">
+        <img class="d-none pt-1 mx-auto d-md-block" src="http://fgiet.ac.in/wp-content/themes/fgiet-new/images/logo.png" alt="fgiet logo"/>
+        <p class="mt-1 text-danger text-center"><span >APPLICATION FORM</span> ( session : 2018-2019 )</p>
+    </div>
+</div>
+<div class="myCard">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ candidateForm|crispy }}
-        {{ highSchoolForm|crispy }}
-        {{ intermediateForm|crispy }}
-        {{ ugOrDiplomaForm|crispy }}
-        {{ upseeForm|crispy }}
-        <button class="btn btn-success" type="submit"> submit </button>
+        <!-- Applicant persional details -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <b>Applicant Persional Details</b>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                        {% for field in candidateForm.visible_fields %}
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                    {{ field | add_class:'form-control' }} 
+                                    {% for error in field.errors %}
+                                    <span class="help-block">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                        </div>
+                        {% endfor %}
+                </div> 
+            </div>
+        </div>
+
+        <!-- Appicant High School details -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <b>Appicant High School details</b>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                        {% for field in highSchoolForm.visible_fields %}
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                    {{ field | add_class:'form-control' }} 
+                                    {% for error in field.errors %}
+                                    <span class="help-block">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                        </div>
+                        {% endfor %}
+                </div> 
+            </div>
+        </div>
+
+        <!-- Appicant inter mediate details -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <b>Appicant inter mediate mdetails</b>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                        {% for field in intermediateForm.visible_fields %}
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                    {{ field | add_class:'form-control' }} 
+                                    {% for error in field.errors %}
+                                    <span class="help-block">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                        </div>
+                        {% endfor %}
+                </div> 
+            </div>
+        </div>
+
+        <!-- Appicant inter ug / diploma details -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <b>Appicant inter ug/diploma details</b>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                        {% for field in ugOrDiplomaForm.visible_fields %}
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                    {{ field | add_class:'form-control' }} 
+                                    {% for error in field.errors %}
+                                    <span class="help-block">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                        </div>
+                        {% endfor %}
+                </div> 
+            </div>
+        </div>
+
+        <!-- Appicant upsee details -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <b>Appicant upsee details</b>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                        {% for field in upseeForm.visible_fields %}
+                        <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                    {{ field | add_class:'form-control' }} 
+                                    {% for error in field.errors %}
+                                    <span class="help-block">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                        </div>
+                        {% endfor %}
+                </div> 
+            </div>
+        </div>
+
+        <div class="center mb-4">
+            <button class="btn btn-success" type="submit"> Submit Form </button>
+        </div>
     </form>
 </div>
 {% endblock %}
