@@ -12,26 +12,33 @@ course_choices = (
     ('MCA','MCA')
 )
 
+apply_year = (
+    ('1','1st Year'),
+    ('2','2nd Year')
+)
+
+passing_year = [(str(i),str(i)) for i in range(2000,2019)]
+
 # ImageLoad Location
 def upload_location(instance, filename):
-    return "CandidateImages/%s/%s" % (instance.id, filename)
+    return "CandidateImages/%s/%s" % (instance,filename)
 
 # high school details model 
 class HighSchool(models.Model):
-    passingYear = models.DateTimeField()
+    passingYear = models.CharField(max_length= 16, choices=passing_year)
     board = models.CharField(max_length = 64)
-    percentageMarks = models.DecimalField(max_digits=3, decimal_places=2)
-    image = models.ImageField(upload_to=upload_location, height_field='height_field', width_field='width_field')
+    percentageMarks = models.CharField(max_length=3)
+    highResultImage = models.ImageField(upload_to=upload_location)
 
     def __str__(self):
         return self.board
     
 # Intermediate details model 
 class Intermediate(models.Model):
-    passingYear = models.DateTimeField()
+    passingYear = models.CharField(max_length= 16, choices=passing_year)
     board = models.CharField(max_length = 64)
-    percentageMarks = models.DecimalField(max_digits=3, decimal_places=2)
-    image = models.ImageField(upload_to=upload_location, height_field='height_field', width_field='width_field')
+    percentageMarks = models.CharField(max_length=3)
+    intermeduateResultImage = models.ImageField(upload_to=upload_location)
 
     # marks for diffrent Importent subject
     math = models.IntegerField( default = 0, null = True)
@@ -43,15 +50,16 @@ class Intermediate(models.Model):
 
 # UG or Diploma details fields
 class UgOrDiploma(models.Model):
-    passingYear = models.DateTimeField()
+    passingYear = models.CharField(max_length= 16, choices=passing_year)
     board = models.CharField(max_length = 64)
     branch = models.CharField(max_length = 32)
-    percentageMarks = models.DecimalField(max_digits=3, decimal_places=2)
-    image = models.ImageField(upload_to=upload_location, height_field='height_field', width_field='width_field')
+    percentageMarks = models.CharField(max_length=3)
+    ugOrDiplomaResultimage = models.ImageField(upload_to=upload_location)
 
     def __str__(self):
         return self.board
 
+# upsee details fields
 class Upsee(models.Model):
     rank = models.IntegerField(null= True)
     catRank = models.IntegerField(null = True)
@@ -62,7 +70,7 @@ class Upsee(models.Model):
 
 # Condidate pername details
 class Candidate(models.Model):
-    applyYear = models.IntegerField()
+    applyYear = models.CharField(max_length= 16, choices= apply_year)
     aadharNo = models.CharField(max_length=16)
     name = models.CharField(max_length=64)
     fatherName = models.CharField(max_length = 64)
@@ -74,13 +82,13 @@ class Candidate(models.Model):
     guardianIncome = models.IntegerField()
 
     # Academic details
-    highSchoole = models.OneToOneField(HighSchool, on_delete=models.CASCADE)
-    intermediate = models.OneToOneField(Intermediate, on_delete = models.CASCADE)
-    ugOrDiploma = models.OneToOneField(UgOrDiploma, on_delete = models.CASCADE)
-    upsee = models.OneToOneField(Upsee, on_delete = models.CASCADE)
+    highSchoole = models.ForeignKey(HighSchool, on_delete=models.CASCADE)
+    intermediate = models.ForeignKey(Intermediate, on_delete = models.CASCADE)
+    ugOrDiploma = models.ForeignKey(UgOrDiploma, on_delete = models.CASCADE)
+    upsee = models.ForeignKey(Upsee, on_delete = models.CASCADE)
     
-    image = models.ImageField(upload_to=upload_location, height_field='height_field', width_field='width_field')
-    signImage = models.ImageField(upload_to=upload_location, height_field='height_field', width_field='width_field')
+    image = models.ImageField(upload_to=upload_location)
+    signImage = models.ImageField(upload_to=upload_location)
     timeStamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
