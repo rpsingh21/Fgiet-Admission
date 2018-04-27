@@ -94,7 +94,7 @@ class CandidateForm(forms.ModelForm):
             'signImage',
         ]
         widgets = {
-            'dob': forms.DateInput(attrs={'class':'datepicker','disabled':True}),
+            'dob': forms.DateInput(attrs={'class':'datepicker'}),
         }
         labels = {
             "applyYear":"Apply Year",

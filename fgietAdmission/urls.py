@@ -20,7 +20,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('admission.urls', namespace= 'admission'))
+    url(r'^account/', include('account.urls', namespace= 'account')),
+    url(r'', include('admission.urls', namespace= 'admission')),
 ]
 
 if settings.DEBUG is True:

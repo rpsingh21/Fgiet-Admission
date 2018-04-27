@@ -11,22 +11,22 @@ function ValidateFileUpload(ele_id) {
     else {
         var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
         if (Extension == "gif" || Extension == "png"|| Extension == "jpeg" || Extension == "jpg") {
-                if (fuData.files && fuData.files[0]) {
-                    var size = fuData.files[0].size;
-                    console.log(size);
-                    if(size > MAX_SIZE){
-                        alert("Maximum file size exceeds");
-                        fuData.value = "";
-                        return;
-                    }
-                    else{
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            $('#blah').attr('src', e.target.result);
-                        }
-                        reader.readAsDataURL(fuData.files[0]);
-                    }
+            if (fuData.files && fuData.files[0]) {
+                var size = fuData.files[0].size;
+                console.log(size);
+                if(size > MAX_SIZE){
+                    alert("Maximum file size exceeds");
+                    fuData.value = "";
+                    return;
                 }
+                else{
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(fuData.files[0]);
+                }
+            }
         } 
     else {
             alert("Photo only allows file types of GIF, PNG, JPG, JPEG");
