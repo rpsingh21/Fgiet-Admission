@@ -23,6 +23,10 @@ body {
     text-transform: capitalize;
 }
 
+.help-block{
+    color:red;
+}
+
 .myCard {
     background-color: #fff;
     padding: 1.5em;

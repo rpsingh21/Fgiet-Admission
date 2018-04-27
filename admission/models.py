@@ -8,8 +8,8 @@ cat_choices = (
 )
 
 course_choices = (
-    ('B. Tech.','B. Tech'),
-    ('MCA','MCA')
+    ('BTech','Bachelor of Technology'),
+    ('MCA','Master of Computer Application')
 )
 
 apply_year = (
@@ -31,39 +31,39 @@ class HighSchool(models.Model):
     highSchoolResultImage = models.ImageField(upload_to=upload_location)
 
     def __str__(self):
-        return self.board
-    
+        return self.highSchoolBoard
+  
 # Intermediate details model 
 class Intermediate(models.Model):
-    intermediatePassingYear = models.CharField(max_length= 16, choices=passing_year)
-    intermediateBoard = models.CharField(max_length = 64)
-    intermediatePercentageMarks = models.CharField(max_length=3)
-    intermediateResultImage = models.ImageField(upload_to=upload_location)
+    intermediatePassingYear = models.CharField(max_length= 16, choices=passing_year, default="0", blank=True, null = True)
+    intermediateBoard = models.CharField(max_length = 64, blank=True, null = True)
+    intermediatePercentageMarks = models.CharField(max_length=3, blank=True, null = True)
+    intermediateResultImage = models.ImageField(upload_to=upload_location, blank=True, null = True)
 
     # marks for diffrent Importent subject
-    math = models.IntegerField( default = 0, null = True)
-    physics = models.IntegerField(default = 0, null = True)
-    chemistry = models.IntegerField(default = 0, null = True)
+    math = models.IntegerField( default = 0, blank=True, null = True)
+    physics = models.IntegerField(default = 0, blank=True, null = True)
+    chemistry = models.IntegerField(default = 0, blank=True, null = True)
 
     def __str__(self):
-        return self.board
+        return self.intermediateBoard
 
 # UG or Diploma details fields
 class UgOrDiploma(models.Model):
-    ugOrDiplompassingYear = models.CharField(max_length= 16, choices=passing_year)
-    ugOrDiplomBoard = models.CharField(max_length = 64)
-    ugOrDiplomBranch = models.CharField(max_length = 32)
-    ugOrDiplomPercentageMarks = models.CharField(max_length=3)
-    ugOrDiplomResultimage = models.ImageField(upload_to=upload_location)
+    ugOrDiplompassingYear = models.CharField(max_length= 16, choices=passing_year, blank=True, null = True)
+    ugOrDiplomBoard = models.CharField(max_length = 64, blank=True, null = True)
+    ugOrDiplomBranch = models.CharField(max_length = 32, blank=True, null = True)
+    ugOrDiplomPercentageMarks = models.CharField(max_length=3, blank=True, null = True)
+    ugOrDiplomResultimage = models.ImageField(upload_to=upload_location, blank=True, null = True)
 
     def __str__(self):
-        return self.board
+        return self.ugOrDiplomBoard
 
 # upsee details fields
 class Upsee(models.Model):
-    rank = models.IntegerField(null= True)
-    catRank = models.IntegerField(null = True)
-    upseeRollNo = models.IntegerField(null = True)
+    rank = models.IntegerField(blank=True, null= True)
+    catRank = models.IntegerField(blank=True, null = True)
+    upseeRollNo = models.IntegerField(blank=True, null = True)
 
     def __str__(self):
         return str(self.rank)

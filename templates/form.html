@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
 {% block title %}{{ title  }}{% endblock %}
 {% block content %}
 <div class="myCard mb-3">
     <div class="center border rounded">
-        <img class="d-none pt-1 mx-auto d-md-block" src="http://fgiet.ac.in/wp-content/themes/fgiet-new/images/logo.png" alt="fgiet logo"/>
+        <img class="d-none pt-1 mx-auto d-md-block img-fluid" src="media/img/logo.png" alt="fgiet logo"/>
         <p class="mt-1 text-danger text-center"><span >APPLICATION FORM</span> ( session : 2018-2019 )</p>
     </div>
 </div>
@@ -135,4 +136,5 @@
         uiLibrary: 'bootstrap4'
     });
 </script>
+<script src="{% static 'js/form.js' %}"></script>
 {% endblock %}
