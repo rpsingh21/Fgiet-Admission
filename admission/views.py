@@ -25,5 +25,5 @@ def formView(request):
             instance.ugOrDiploma = ugOrDiplomaForm.save()
             instance.upsee = upseeForm.save()
             instance.save()
-            return HttpResponse("successfully")
+            return render(request,'success.html',{'instance':instance})
     return render(request,'form.html',content)

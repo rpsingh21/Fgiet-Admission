@@ -1,11 +1,67 @@
 {% extends "base.html" %}
-{% block title %}{{ title  }}{% endblock %}
+{% load staticfiles %}
+{% block title %}Print Form{% endblock %}
 {% block content %}
 <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">Well done!</h4>
-    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that
-        you can see how spacing within an alert works with this kind of content.</p>
-    <hr>
-    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    <p>you are successfully submit yor form futher informtion send on email.</p>
 </div>
-{% endblock }
+<div id="print" class="myCard m-3">
+    <div class="row">
+        <div class="col-sm-4">
+            <img class="img-fluid" src="{{ instance.image.url }}"/>
+            <img class="img-fluid" src="{{ instance.signImage.url }}"/>
+        </div>
+        <div class="col-sm-8 detail">
+            <p><b>Apply Year </b> {{ instance.applyYear }} <b class="ml-3">Course </b> {{ instance.course }} </p>
+            <p><b>Name of Applicant </b> {{ instance.name }} </p>
+            <p><b>Father's  </b> {{ instance.fatherName }} </p>
+            <p><b>Aadhar No </b> {{ instance.aadharNo }} </p>
+            <p><b>Date of Birth </b> {{ instance.dob }} </p>
+            <p><b>Address </b> {{ instance.address }} </p>
+            <p><b>Mobile No </b> {{ instance.mobileNo }} </p>
+            <p><b>Category </b> {{ instance.category }} <b class="ml-3">Guardian Income </b> {{ instance.guardianIncome }} </p>
+        </div>
+        <hr/>
+    </div>
+    <br/><br/>
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Examination</th>
+                        <th scope="col">Passing Year</th>
+                        <th scope="col">Board / University</th>
+                        <th scope="col">Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>High School</td>
+                        <td>{{ instance.highSchoole.highSchoolPassingYear }}</td>
+                        <td>{{ instance.highSchoole.highSchoolBoard }}</td>
+                        <td>{{ instance.highSchoole.highSchoolPercentageMarks }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Intermediate</td>
+                        <td>{{ instance.intermediate.intermediatePassingYear }}</td>
+                        <td>{{ instance.intermediate.intermediateBoard }}</td>
+                        <td>{{ instance.intermediate.intermediatePercentageMarks }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Ug / Diploma</td>
+                        <td>{{ instance.ugOrDiploma.ugOrDiplompassingYear }}</td>
+                        <td>{{ instance.ugOrDiploma.ugOrDiplomBoard }}</td>
+                        <td>{{ instance.ugOrDiploma.ugOrDiplomPercentageMarks }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

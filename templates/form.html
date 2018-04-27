@@ -20,17 +20,17 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                        {% for field in candidateForm.visible_fields %}
-                        <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
-                                    {{ field | add_class:'form-control' }} 
-                                    {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                        </div>
-                        {% endfor %}
+                    {% for field in candidateForm.visible_fields %}
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }} 
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                    </div>
+                    {% endfor %}
                 </div> 
             </div>
         </div>
@@ -42,17 +42,17 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                        {% for field in highSchoolForm.visible_fields %}
-                        <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
-                                    {{ field | add_class:'form-control' }} 
-                                    {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                        </div>
-                        {% endfor %}
+                    {% for field in highSchoolForm.visible_fields %}
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }} 
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                    </div>
+                    {% endfor %}
                 </div> 
             </div>
         </div>
@@ -64,17 +64,17 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                        {% for field in intermediateForm.visible_fields %}
-                        <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
-                                    {{ field | add_class:'form-control' }} 
-                                    {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                        </div>
-                        {% endfor %}
+                    {% for field in intermediateForm.visible_fields %}
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }} 
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                    </div>
+                    {% endfor %}
                 </div> 
             </div>
         </div>
@@ -86,17 +86,17 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                        {% for field in ugOrDiplomaForm.visible_fields %}
-                        <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
-                                    {{ field | add_class:'form-control' }} 
-                                    {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                        </div>
-                        {% endfor %}
+                    {% for field in ugOrDiplomaForm.visible_fields %}
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }} 
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                    </div>
+                    {% endfor %}
                 </div> 
             </div>
         </div>
@@ -108,17 +108,17 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                        {% for field in upseeForm.visible_fields %}
-                        <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
-                                    {{ field | add_class:'form-control' }} 
-                                    {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                        </div>
-                        {% endfor %}
+                    {% for field in upseeForm.visible_fields %}
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }} 
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                    </div>
+                    {% endfor %}
                 </div> 
             </div>
         </div>

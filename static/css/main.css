@@ -23,6 +23,22 @@ body {
     text-transform: capitalize;
 }
 
+th.min{
+    white-space: nowrap;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+.details p{
+    border: 1px solid #aaa;
+}
+
+.details b{
+    border: 1px solid #aaa;
+}
+
 .help-block{
     color:red;
 }
@@ -44,4 +60,13 @@ body {
 
 @media only screen and (min-width: 620px){
 
+}
+
+.table-bordered thead th {
+    border-bottom-width: 1px;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #dee2e6;
 }
