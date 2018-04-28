@@ -15,7 +15,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg border-bottom navbar-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="/media/img/fgiet.png" width="40" height="38" class="d-inline-block"
                 alt="fgiet"> Admissoin Cell
         </a>
@@ -25,27 +25,18 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
+                {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
+                        <a class="nav-link" href="#">{{ request.user.username }}</a>
+                    </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="{% url 'account:logout' %}">logout</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:login' %}">login</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -53,11 +44,12 @@
         {% block content %}
         {% endblock %}
     </div>
-    <nav class="navbar navbar-light border-top">
-        <div class="center">
-            <p>This website created by Compuet Science and Engg</p>
+    <div class="footer">
+        <div class="centerD">
+            <p class="text-center"><b>© Copyright 2017 FGIET - All Rights Reserved</b></p>
+            <p class="text-center"><b>This website created by Compuet Science and Engg</b></p>
         </div>
-    </nav>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>

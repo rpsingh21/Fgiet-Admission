@@ -110,3 +110,5 @@ ENV/
 .mypy_cache/
 migrations
 .vscode/
+secret.py
+utils

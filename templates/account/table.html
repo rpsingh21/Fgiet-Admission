@@ -13,6 +13,7 @@
             <thead>
                 <tr class="capitalize text-center">
                     <th rowspan="2">#</th>
+                    <th colspan="2">Apply For</th>
                     <th colspan="7">Applicant Persional Details</th>
                     <th colspan="3">high school details</th>
                     <th colspan="6">Intermediate details</th>
@@ -20,8 +21,12 @@
                     <th colspan="3">upsee details </th>
                 </tr>
                 <tr class="capitalize">
+                    <!-- Application for -->
+                    <th scope="col">Course</th>
+                    <th scope="col">Year</th>
+
                     <!-- persional detail -->
-                    <th scope="col">Image</th>
+                    <th class="min" scope="col">Applicant Image</th>
                     <th class="min" scope="col">Name of Applicant</th>
                     <th class="min" scope="col">Father's name</th>
                     <th class="min" scope="col">Aadhar No</th>
@@ -58,6 +63,11 @@
                 {% for instance in instances %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
+
+                    <!-- Application for -->
+                    <td scope="col">{{ instance.course }}</td>
+                    <td scope="col">{{ instance.applyYear }}</td>
+
                     <!-- pername details -->
                     <td><img src="{{ instance.image.url }}" class="img-fluid"/></td>
                     <td>{{ instance.name }}</td>

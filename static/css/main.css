@@ -5,15 +5,26 @@ body {
     background-color: #f8f9fa;
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
+
 .navbar{
     background-color: white;
+    text-transform: uppercase;
 }
+
+.centerD{
+    display: table;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .border-bottom{
     border-bottom: 1px solid #aaa;
 }
+
 .border-top{
     border-top: 1px solid #aaa
 }
+
 .center{
     margin: 0 auto;
     padding:0;
@@ -70,3 +81,13 @@ th.min{
     vertical-align: bottom;
     border-bottom: 1px solid #dee2e6;
 }
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+}
+  
