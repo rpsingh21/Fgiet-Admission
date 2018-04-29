@@ -1,7 +1,14 @@
 from django.conf.urls import url
 
-from .views import formView
+from .views import (
+    form_view, fqs_view,
+    success_view,
+    application_view
+)
 
 urlpatterns = [
-    url(r'^$', formView, name='form')
+    url(r'^$', form_view, name='form'),
+    url(r'^success/$',success_view, name='success'),
+    url(r'^applicant/(?P<id>\d+)$',application_view, name="application"),
+    url(r'^fqs/$',fqs_view,name='fqs')
 ]

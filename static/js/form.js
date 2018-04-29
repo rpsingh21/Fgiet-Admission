@@ -1,6 +1,7 @@
 var MAX_SIZE = 200*1024
 var ugOrDiplompassing = ['id_ugOrDiplompassingYear','id_ugOrDiplomBoard','id_ugOrDiplomBranch','id_ugOrDiplomPercentageMarks','id_ugOrDiplomResultimage']
 var intermediatePassing =['id_intermediatePassingYear','id_intermediateBoard','id_intermediatePercentageMarks','id_intermediateResultImage']
+var mcaFields = ['id_math','id_physics','id_chemistry']
 
 function ValidateFileUpload(ele_id) {
     var fuData = document.getElementById(ele_id);
@@ -38,6 +39,17 @@ function ValidateFileUpload(ele_id) {
 function changeRequirment(){
     var year = document.getElementById("id_applyYear").value;
     var course = document.getElementById("id_course").value;
+    $("#ug").show("slow");
+    if(course == "MCA"){
+        for(var id in mcaFields){
+            document.getElementById(mcaFields[id]).parentNode.hidden = true;
+        }
+    }
+    else{
+        for(var id in mcaFields){
+            document.getElementById(mcaFields[id]).parentNode.hidden = false;
+        }
+    }
     if(year == "1" && course == "MCA"){
         for(var id in ugOrDiplompassing){
             document.getElementById(ugOrDiplompassing[id]).required = true;
@@ -61,6 +73,7 @@ function changeRequirment(){
         for(var id in intermediatePassing){
             document.getElementById(intermediatePassing[id]).required = true;
         }
+        $("#ug").hide("slow");
     }
     else{
         for(var id in ugOrDiplompassing){
@@ -89,5 +102,3 @@ $("document").ready(function(){
         }
     })
 });
-
-

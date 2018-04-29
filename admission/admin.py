@@ -1,13 +1,31 @@
 from django.contrib import admin
 
-from .models import HighSchool, Intermediate, Upsee, Candidate
+from .models import HighSchool, Intermediate, Upsee, Candidate, UgOrDiploma
 
 class CandidateModelAdmin(admin.ModelAdmin):
     list_display = ['name','applyYear','aadharNo','fatherName','mobileNo','category','address','course']
     search_fields = ['name','address']
 
-admin.site.register(HighSchool)
-admin.site.register(Intermediate)
-admin.site.register(Upsee)
+
+class HighSchoolModelAdmin(admin.ModelAdmin):
+    list_display = ['highSchoolPassingYear','highSchoolBoard','highSchoolRollNo','highSchoolPercentageMarks']
+    search_fields = ['highSchoolPassingYear','highSchoolBoard','highSchoolRollNo','highSchoolPercentageMarks']
+
+class IntermediateModelAdmin(admin.ModelAdmin):
+    list_display = ['intermediatePassingYear','intermediateBoard','intermediateRollNo','intermediatePercentageMarks','math','physics','chemistry']
+    search_fields = ['intermediatePassingYear','intermediateBoard','intermediateRollNo',]
+
+class UgOrDiplomaModelAdmin(admin.ModelAdmin):
+    list_display = ['ugOrDiplompassingYear','ugOrDiplomBoard','ugOrDiplomRollNo','ugOrDiplomBranch','ugOrDiplomPercentageMarks']
+    search_fields = ['ugOrDiplompassingYear','ugOrDiplomBoard','ugOrDiplomRollNo','ugOrDiplomBranch','ugOrDiplomPercentageMarks']
+
+class UpseeModelAdmin(admin.ModelAdmin):
+    list_display = ['rank','catRank','upseeRollNo']
+    search_fields = ['rank','catRank','upseeRollNo']
+
+admin.site.register(HighSchool, HighSchoolModelAdmin)
+admin.site.register(Intermediate, IntermediateModelAdmin)
+admin.site.register(UgOrDiploma, UgOrDiplomaModelAdmin)
+admin.site.register(Upsee, UpseeModelAdmin)
 admin.site.register(Candidate, CandidateModelAdmin)
 

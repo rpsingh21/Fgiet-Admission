@@ -11,6 +11,11 @@
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}" />
+    <style type="text/css" media="print">
+    .footer, #print, .no-print {
+        visibility: hidden;
+    }
+    </style>
 </head>
 
 <body>
@@ -25,9 +30,18 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admission:fqs' %}">fqs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://fgiet.ac.in/">about us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://fgiet.ac.in/?page_id=173">contect us</a>
+                </li>
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                        <a class="nav-link" href="#">{{ request.user.username }}</a>
+                        <a class="nav-link" href="{% url 'account:table' %}">{{ request.user.username }}</a>
                     </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account:logout' %}">logout</a>
@@ -40,17 +54,18 @@
             </ul>
         </div>
     </nav>
-    <div class="container my-4">
+    <div class="my-4">
         {% block content %}
         {% endblock %}
     </div>
-    <div class="footer">
+    <br class="m2"/>
+    <div class="footer border-top">
         <div class="centerD">
             <p class="text-center"><b>© Copyright 2017 FGIET - All Rights Reserved</b></p>
-            <p class="text-center"><b>This website created by Compuet Science and Engg</b></p>
+            <p class="text-center"><b>This website made by Compuet Science and Engg department</b></p>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>

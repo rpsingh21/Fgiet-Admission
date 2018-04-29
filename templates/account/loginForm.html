@@ -2,12 +2,12 @@
 {% load crispy_forms_tags %}
 {% block title %}{{ title }} {% endblock %}
 {% block content %}
-<div class="my-5">
+<div class="container my-5">
 	<div class="row justify-content-md-center"> 
 		<div class="col-sm col-md-6">
 			<div class="card">
 				<div class="card-header">
-					<h2 class="text-center">USER LOGIN</h2>
+					<h2 class="text-center">{{ title|upper }}</h2>
 				</div>
 				<dir class="card-body">
 					<form method="post">

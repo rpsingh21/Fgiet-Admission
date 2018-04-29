@@ -8,12 +8,14 @@ class HighSchoolForm(forms.ModelForm):
         model = HighSchool
         fields = [
             'highSchoolPassingYear',
+            'highSchoolRollNo',
             'highSchoolBoard',
             'highSchoolPercentageMarks',
             'highSchoolResultImage',
         ]
         labels = {
             'highSchoolPassingYear':'year of passing',
+            'highSchoolRollNo':'roll no',
             'highSchoolBoard':'board',
             'highSchoolPercentageMarks':'Percentage Marks',
             'highSchoolResultImage':'upload marksheet photograph',
@@ -25,15 +27,17 @@ class IntermediateForm(forms.ModelForm):
         model = Intermediate
         fields = [
             'intermediatePassingYear',
+            'intermediateRollNo',
             'intermediateBoard',
             'intermediatePercentageMarks',
-            'intermediateResultImage',
             'math',
             'physics',
-            'chemistry'
+            'chemistry',
+            'intermediateResultImage',
         ]
         labels = {
             'intermediatePassingYear':'passing of Year',
+            'intermediateRollNo':'Roll no',
             'intermediateBoard':'board',
             'intermediatePercentageMarks':'Percentage Marks',
             'intermediateResultImage':'upload marksheet photograph',
@@ -48,6 +52,7 @@ class UgOrDiplomaForm(forms.ModelForm):
         model = UgOrDiploma
         fields = [
             'ugOrDiplompassingYear',
+            'ugOrDiplomRollNo',
             'ugOrDiplomBoard',
             'ugOrDiplomBranch',
             'ugOrDiplomPercentageMarks',
@@ -55,6 +60,7 @@ class UgOrDiplomaForm(forms.ModelForm):
         ]
         labels = {
             'ugOrDiplompassingYear':'Passing of year',
+            'ugOrDiplomRollNo':'roll no',
             'ugOrDiplomBoard':'Board',
             'ugOrDiplomBranch':'Branch',
             'ugOrDiplomPercentageMarks':'Percentage Marks',
@@ -71,9 +77,9 @@ class UpseeForm(forms.ModelForm):
             'upseeRollNo',
         ]
         labels = {
-            'rank':'Upsee Rank',
-            'catRank':'category rank',
-            'upseeRollNo':'Upsee Roll No.'
+            'rank':'Applicant Upsee Rank',
+            'catRank':'Applicant category rank',
+            'upseeRollNo':'Applicant Upsee Roll No.'
         }
 
 class CandidateForm(forms.ModelForm):
@@ -83,8 +89,10 @@ class CandidateForm(forms.ModelForm):
             'applyYear',
             'course',
             'name',
-            'aadharNo',
             'fatherName',
+            'gender',
+            'aadharNo',
+            'email',
             'guardianIncome',
             'category',
             'dob',
@@ -108,5 +116,8 @@ class CandidateForm(forms.ModelForm):
             'mobileNo':'Mobile No',
             'image':'Upload color Photograph of Applicant ',
             'signImage':'Upload sigature of Applicant',
+        }
+        help_texts = {
+            'applyYear':'But on detail page i am showing about 10 different objects and they have 10 different forms. do i need to load them all. or i was thinking just to make a dictionary of all of them in view and then show in template'
         }
 

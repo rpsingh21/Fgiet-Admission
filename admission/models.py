@@ -17,6 +17,12 @@ apply_year = (
     ('2','2nd Year')
 )
 
+gender_choices = (
+    ('Male','Male'),
+    ('Female','Female'),
+    ('Unspecified','Unspecified')
+)
+
 passing_year = [(str(i),str(i)) for i in range(2000,2019)]
 
 # ImageLoad Location
@@ -27,33 +33,36 @@ def upload_location(instance, filename):
 class HighSchool(models.Model):
     highSchoolPassingYear = models.CharField(max_length= 16, choices=passing_year)
     highSchoolBoard = models.CharField(max_length = 64)
-    highSchoolPercentageMarks = models.CharField(max_length=3)
+    highSchoolRollNo = models.CharField(max_length = 16)
+    highSchoolPercentageMarks = models.FloatField()
     highSchoolResultImage = models.ImageField(upload_to=upload_location)
 
     def __str__(self):
-        return self.highSchoolBoard
+        return self.highSchoolRollNo
   
 # Intermediate details model 
 class Intermediate(models.Model):
     intermediatePassingYear = models.CharField(max_length= 16, choices=passing_year, default="0", blank=True, null = True)
     intermediateBoard = models.CharField(max_length = 64, blank=True, null = True)
-    intermediatePercentageMarks = models.CharField(max_length=3, blank=True, null = True)
+    intermediateRollNo = models.CharField(max_length=32, blank=True, null=True)
+    intermediatePercentageMarks = models.FloatField(blank=True, null = True)
     intermediateResultImage = models.ImageField(upload_to=upload_location, blank=True, null = True)
 
     # marks for diffrent Importent subject
-    math = models.IntegerField( default = 0, blank=True, null = True)
-    physics = models.IntegerField(default = 0, blank=True, null = True)
-    chemistry = models.IntegerField(default = 0, blank=True, null = True)
+    math = models.IntegerField(blank=True, null=True)
+    physics = models.IntegerField(blank=True, null=True)
+    chemistry = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.intermediateBoard
+        return self.intermediateRollNo
 
 # UG or Diploma details fields
 class UgOrDiploma(models.Model):
-    ugOrDiplompassingYear = models.CharField(max_length= 16, choices=passing_year, blank=True, null = True)
-    ugOrDiplomBoard = models.CharField(max_length = 64, blank=True, null = True)
+    ugOrDiplompassingYear = models.CharField(max_length=16, choices=passing_year, blank=True, null = True)
+    ugOrDiplomBoard = models.CharField(max_length = 64, blank=True, null=True)
+    ugOrDiplomRollNo = models.CharField(max_length=16, blank=True, null=True)
     ugOrDiplomBranch = models.CharField(max_length = 32, blank=True, null = True)
-    ugOrDiplomPercentageMarks = models.CharField(max_length=3, blank=True, null = True)
+    ugOrDiplomPercentageMarks = models.FloatField(blank=True, null = True)
     ugOrDiplomResultimage = models.ImageField(upload_to=upload_location, blank=True, null = True)
 
     def __str__(self):
@@ -63,16 +72,18 @@ class UgOrDiploma(models.Model):
 class Upsee(models.Model):
     rank = models.IntegerField(blank=True, null= True)
     catRank = models.IntegerField(blank=True, null = True)
-    upseeRollNo = models.IntegerField(blank=True, null = True)
+    upseeRollNo = models.CharField(max_length=16, blank=True, null=True)
 
     def __str__(self):
-        return str(self.rank)
+        return self.upseeRollNo
 
 # Condidate pername details
 class Candidate(models.Model):
     applyYear = models.CharField(max_length= 16, choices= apply_year)
-    aadharNo = models.CharField(max_length=16)
+    aadharNo = models.CharField(max_length=16,unique=True)
+    gender = models.CharField(max_length= 8, choices= gender_choices)
     name = models.CharField(max_length=64)
+    email = models.CharField(max_length=64)
     fatherName = models.CharField(max_length = 64)
     dob = models.DateTimeField()
     category = models.CharField(max_length=4, choices = cat_choices)
