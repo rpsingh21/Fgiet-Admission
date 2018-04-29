@@ -12,12 +12,12 @@
         </div>
     </div>
     <div class="myCard">
-        <form method="post" enctype="multipart/form-data">
+        <form class="text-primary" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <!-- Applicant persional details -->
             <div class="card mb-4">
-                <div class="card-header">
-                    <b>Applicant Persional Details</b>
+                <div class="card-header uppercase">
+                    <b>Enter your Persional Details</b>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -39,21 +39,21 @@
 
             <!-- Appicant High School details -->
             <div class="card mb-4">
-                <div class="card-header">
-                    <b>Appicant High School details</b>
+                <div class="card-header uppercase">
+                    <b>Enter your High School details</b>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         {% for field in highSchoolForm.visible_fields %}
                         <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
-                                    {{ field | add_class:'form-control' }} 
-                                    <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
-                                    {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }} 
+                                <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
                         </div>
                         {% endfor %}
                     </div> 
@@ -62,21 +62,21 @@
 
             <!-- Appicant inter mediate details -->
             <div class="card mb-4">
-                <div class="card-header">
-                    <b>Appicant inter mediate mdetails<small> ( optional for diploma applicant )</small></b>
+                <div class="card-header uppercase">
+                    <b>Enter you inter mediate details<small class="text-primary"> ( optional for diploma applicant )</small></b>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         {% for field in intermediateForm.visible_fields %}
                         <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
-                                    {{ field | add_class:'form-control' }} 
-                                    <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
-                                    {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }} 
+                                <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
                         </div>
                         {% endfor %}
                     </div> 
@@ -85,21 +85,44 @@
 
             <!-- Appicant inter ug / diploma details -->
             <div id ="ug" class="card mb-4">
-                <div class="card-header">
-                    <b>Appicant ug/diploma details</b>
+                <div class="card-header uppercase">
+                    <b>Enter your ug/diploma details</b>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         {% for field in ugOrDiplomaForm.visible_fields %}
                         <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
-                                    {{ field | add_class:'form-control' }}
-                                    <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
-                                    {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }}
+                                <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div> 
+                </div>
+            </div>
+
+            <!-- Appicant Branch Preferances -->
+            <div id="branch" class="card mb-4">
+                <div class="card-header uppercase">
+                    <b>Your Branch Preferances</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for field in branchFrom.visible_fields %}
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }}
+                                <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
                         </div>
                         {% endfor %}
                     </div> 
@@ -108,27 +131,27 @@
 
             <!-- Appicant upsee details -->
             <div class="card mb-4">
-                <div class="card-header">
+                <div class="card-header uppercase">
                     <b>Appicant upsee details</b>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         {% for field in upseeForm.visible_fields %}
                         <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
-                                    {{ field | add_class:'form-control' }}
-                                    <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
-                                    {% for error in field.errors %}
-                                    <span class="help-block">{{ error }}</span>
-                                    {% endfor %}
-                                </div>
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }}
+                                <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
                         </div>
                         {% endfor %}
                     </div> 
                 </div>
             </div>
-
+            
             <div class="centerD pb-4">
                 <button class="btn btn-success" type="submit"> Submit Form </button>
             </div>

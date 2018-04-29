@@ -28,8 +28,7 @@ body {
     padding: 0;
 }
 
-.capitalize,
-.card-header b {
+.capitalize{
     text-transform: capitalize;
 }
 
@@ -84,7 +83,8 @@ th.min {
     background-color: #fff;
 }
 
-label {
+label,
+.lowercase {
     text-transform: lowercase;
 }
 

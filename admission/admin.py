@@ -1,11 +1,10 @@
 from django.contrib import admin
 
-from .models import HighSchool, Intermediate, Upsee, Candidate, UgOrDiploma
+from .models import HighSchool, Intermediate, Upsee, Candidate, UgOrDiploma, Branch
 
 class CandidateModelAdmin(admin.ModelAdmin):
     list_display = ['name','applyYear','aadharNo','fatherName','mobileNo','category','address','course']
     search_fields = ['name','address']
-
 
 class HighSchoolModelAdmin(admin.ModelAdmin):
     list_display = ['highSchoolPassingYear','highSchoolBoard','highSchoolRollNo','highSchoolPercentageMarks']
@@ -23,9 +22,12 @@ class UpseeModelAdmin(admin.ModelAdmin):
     list_display = ['rank','catRank','upseeRollNo']
     search_fields = ['rank','catRank','upseeRollNo']
 
+class BranchModelAdmin(admin.ModelAdmin):
+    list_display = ['first', 'second', 'third', 'fourth']
+
 admin.site.register(HighSchool, HighSchoolModelAdmin)
 admin.site.register(Intermediate, IntermediateModelAdmin)
 admin.site.register(UgOrDiploma, UgOrDiplomaModelAdmin)
 admin.site.register(Upsee, UpseeModelAdmin)
+admin.site.register(Branch, BranchModelAdmin)
 admin.site.register(Candidate, CandidateModelAdmin)
-

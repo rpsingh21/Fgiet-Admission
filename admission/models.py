@@ -12,6 +12,13 @@ course_choices = (
     ('MCA','Master of Computer Application')
 )
 
+branch_choices = (
+    ('AE','Aeronautical Engineering'),
+    ('CSE','Computer Science & Engg.'),
+    ('ECE','Electronics & Communication Engg.'),
+    ('ME','Mechanical Engg.')
+)
+
 apply_year = (
     ('1','1st Year'),
     ('2','2nd Year')
@@ -77,6 +84,16 @@ class Upsee(models.Model):
     def __str__(self):
         return self.upseeRollNo
 
+# Branch prefrance model
+class Branch(models.Model):
+    first = models.CharField(max_length=16,choices=branch_choices, blank=True, null=True)
+    second = models.CharField(max_length=16,choices=branch_choices, blank=True, null=True)
+    third = models.CharField(max_length=16,choices=branch_choices, blank=True, null=True)
+    fourth = models.CharField(max_length=16,choices=branch_choices, blank=True, null=True)
+
+    def __str__(self):
+        return self.first
+
 # Condidate pername details
 class Candidate(models.Model):
     applyYear = models.CharField(max_length= 16, choices= apply_year)
@@ -97,10 +114,11 @@ class Candidate(models.Model):
     intermediate = models.ForeignKey(Intermediate, on_delete = models.CASCADE)
     ugOrDiploma = models.ForeignKey(UgOrDiploma, on_delete = models.CASCADE)
     upsee = models.ForeignKey(Upsee, on_delete = models.CASCADE)
+    preference = models.ForeignKey(Branch, on_delete = models.CASCADE)
     
     image = models.ImageField(upload_to=upload_location)
     signImage = models.ImageField(upload_to=upload_location)
     timeStamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)

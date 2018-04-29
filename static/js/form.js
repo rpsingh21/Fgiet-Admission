@@ -44,6 +44,7 @@ function changeRequirment(){
         for(var id in mcaFields){
             document.getElementById(mcaFields[id]).parentNode.hidden = true;
         }
+        document.getElementById("branch").hidden = true;
     }
     else{
         for(var id in mcaFields){
@@ -59,6 +60,7 @@ function changeRequirment(){
         }
     }
     else if(year == 2 && course == "BTech"){
+        document.getElementById("branch").hidden = false;
         for(var id in ugOrDiplompassing){
             document.getElementById(ugOrDiplompassing[id]).required = true;
         }
@@ -67,6 +69,7 @@ function changeRequirment(){
         }
     }
     else if(year == 1 && course == "BTech"){
+        document.getElementById("branch").hidden = false;
         for(var id in ugOrDiplompassing){
             document.getElementById(ugOrDiplompassing[id]).required = false;
         }

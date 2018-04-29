@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Candidate, HighSchool, Intermediate, UgOrDiploma, Upsee
+from .models import Candidate, HighSchool, Intermediate, UgOrDiploma, Upsee, Branch
 
 class HighSchoolForm(forms.ModelForm):
 
@@ -82,7 +82,25 @@ class UpseeForm(forms.ModelForm):
             'upseeRollNo':'Applicant Upsee Roll No.'
         }
 
+class BranchFrom(forms.ModelForm):
+
+    class Meta:
+        model = Branch
+        fields = [
+            'first',
+            'second',
+            'third',
+            'fourth'
+        ]
+        labels = {
+            'first':'first prefrance',
+            'second':'second prefrance',
+            'third':'third prefrance',
+            'fourth':'fourth prefrance'
+        }
+
 class CandidateForm(forms.ModelForm):
+
     class Meta:
         model = Candidate
         fields = [
@@ -118,6 +136,6 @@ class CandidateForm(forms.ModelForm):
             'signImage':'Upload sigature of Applicant',
         }
         help_texts = {
-            'applyYear':'But on detail page i am showing about 10 different objects and they have 10 different forms. do i need to load them all. or i was thinking just to make a dictionary of all of them in view and then show in template'
+            
         }
 

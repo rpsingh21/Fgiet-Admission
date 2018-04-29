@@ -8,7 +8,8 @@ from .forms import (
     UpseeForm,
     UgOrDiplomaForm,
     IntermediateForm,
-    HighSchoolForm
+    HighSchoolForm,
+    BranchFrom
 )
 from .models import Candidate
 from utils.tasks import send_sms
@@ -19,13 +20,15 @@ def form_view(request):
     intermediateForm = IntermediateForm(request.POST or None, request.FILES or None)
     ugOrDiplomaForm = UgOrDiplomaForm(request.POST or None, request.FILES or None)
     upseeForm = UpseeForm(request.POST or None, request.FILES or None)
+    branchFrom = BranchFrom(request.POST or None, request.FILES or None)
     content = {
         'title' : 'Admission Form',
         'candidateForm' : candidateForm,
         'highSchoolForm' : highSchoolForm,
         'intermediateForm' : intermediateForm,
         'ugOrDiplomaForm' : ugOrDiplomaForm,
-        'upseeForm' : upseeForm
+        'upseeForm' : upseeForm,
+        'branchFrom':branchFrom
     }
     if request.method == 'POST':
         if candidateForm.is_valid() and highSchoolForm.is_valid() and intermediateForm.is_valid() and ugOrDiplomaForm.is_valid() and upseeForm.is_valid():    
@@ -34,6 +37,7 @@ def form_view(request):
             instance.intermediate = intermediateForm.save()
             instance.ugOrDiploma = ugOrDiplomaForm.save()
             instance.upsee = upseeForm.save()
+            instance.preference = branchFrom.save()
             instance.save()
 
             # sending sms to user
