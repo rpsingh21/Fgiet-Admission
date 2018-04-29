@@ -11,6 +11,7 @@ from .forms import (
     HighSchoolForm
 )
 from .models import Candidate
+from utils.tasks import send_sms
 
 def form_view(request):
     candidateForm = CandidateForm(request.POST or None, request.FILES or None)
@@ -34,6 +35,13 @@ def form_view(request):
             instance.ugOrDiploma = ugOrDiplomaForm.save()
             instance.upsee = upseeForm.save()
             instance.save()
+
+            # sending sms to user
+            mgs = "Congratulation! "+instance.name +", your registration is successfully completed and Registration No is : FGIET2018-"+str(instance.id)
+            
+            send_sms.delay(instance.mobileNo,mgs)
+
+            # return responce 
             request.session['pk'] = instance.id
             request.session['aadhar'] = instance.aadharNo
             return redirect(reverse('admission:success'))

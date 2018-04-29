@@ -37,26 +37,26 @@
                     <td>{{ instance.course }}</td>
                 </tr>
                 <tr>
-                    <th class="min">name of Applicant </th>
-                    <td>{{ instance.name }}</td>
-                    <th class="min">Father's name of Applicant</th>
-                    <td>{{ instance.fatherName}}</td>
+                    <th class="min">Applicant's Name </th>
+                    <td>{{ instance.name|title }}</td>
+                    <th class="min">Father's Name</th>
+                    <td>{{ instance.fatherName|title }}</td>
                 </tr>
                 <tr>
-                    <th >Aadhar No Applicant </th>
+                    <th >Aadhar No </th>
                     <td>{{ instance.aadharNo }}</td>
                     <th>Date of Birth </th>
                     <td>{{ instance.dob | date:"d M Y" }}</td>
                 </tr>
                 <tr>
-                    <th class="min">Address of Applicant </th>
+                    <th class="min">Address </th>
                     <td colspan="3">{{ instance.address }}</td>
                 </tr>
                 <tr>
                     <td class="w-25" colspan="2">
-                        <img height="50px"src="{{ instance.signImage.url }}" />
+                        <img class="mw-100" height="50px"src="{{ instance.signImage.url }}" />
                     </td>
-                    <th >Mobile No Applicant </th>
+                    <th >Mobile No </th>
                     <td>{{ instance.mobileNo }}</td>
                     <th>Email</th>
                     <td>{{ instance.email}}</td>
@@ -107,29 +107,29 @@
             </table>
         </div>
         {% if request.user.is_authenticated %}
-        <div class="no-print mt-5 card">
+        <div class="no-print m-3 mt-5">
             <div class="row">
-                <div class="col-md-4">
-                    {% if instance.highSchoole.highSchoolResultImage %}
-                        <a target="_blank" href="{{ instance.highSchoole.highSchoolResultImage.url }}">
-                            <img class="img-fluid" src="{{ instance.highSchoole.highSchoolResultImage.url }}"/>
-                        </a>
-                    {% endif %}
+                {% if instance.highSchoole.highSchoolResultImage %}
+                <div class="col-md-4 card p-2">
+                    <a target="_blank" href="{{ instance.highSchoole.highSchoolResultImage.url }}">
+                        <img class="img-fluid" src="{{ instance.highSchoole.highSchoolResultImage.url }}"/>
+                    </a>
                 </div>
-                <div class="col-md-4">
-                    {% if instance.intermediate.intermediateResultImage %}
-                        <a target="_blank" href="{{instance.intermediate.intermediateResultImage.url}}">
-                            <img class="img-fluid" src="{{ instance.intermediate.intermediateResultImage.url }}"/>
-                        </a>
-                    {% endif %}
+                {% endif %}
+                {% if instance.intermediate.intermediateResultImage %}
+                <div class="col-md-4 card p-2">
+                    <a target="_blank" href="{{instance.intermediate.intermediateResultImage.url}}">
+                        <img class="img-fluid" src="{{ instance.intermediate.intermediateResultImage.url }}"/>
+                    </a>
                 </div>
-                <div class="col-md-4">
-                    {% if instance.ugOrDiploma.ugOrDiplomResultimage %}
-                        <a target="_blank" href="{{instance.ugOrDiploma.ugOrDiplomResultimage.url}}">
-                            <img class="img-fluid" src="{{ instance.ugOrDiploma.ugOrDiplomResultimage.url }}"/>
-                        </a>
-                    {% endif %}
+                {% endif %}
+                {% if instance.ugOrDiploma.ugOrDiplomResultimage %}
+                <div class="col-md-4 card p-2">
+                    <a target="_blank" href="{{instance.ugOrDiploma.ugOrDiplomResultimage.url}}">
+                        <img class="img-fluid" src="{{ instance.ugOrDiploma.ugOrDiplomResultimage.url }}"/>
+                    </a>
                 </div>
+                {% endif %}
             </div>
         </div>
         {% endif%}

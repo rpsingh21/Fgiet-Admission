@@ -12,40 +12,41 @@ body {
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-.navbar{
+.navbar {
     background-color: white;
     text-transform: uppercase;
 }
 
-.centerD{
+.centerD {
     display: table;
     margin-right: auto;
     margin-left: auto;
 }
 
-.center{
+.center {
     margin: 0 auto;
-    padding:0;
+    padding: 0;
 }
 
-.capitalize, .card-header b{
+.capitalize,
+.card-header b {
     text-transform: capitalize;
 }
 
-th.min{
+th.min {
     white-space: nowrap;
 }
 
-.details p{
+.details p {
     border: 1px solid #aaa;
 }
 
-.details b{
+.details b {
     border: 1px solid #aaa;
 }
 
-.help-block{
-    color:red;
+.help-block {
+    color: red;
 }
 
 .myCard {
@@ -57,15 +58,13 @@ th.min{
     border-radius: 0px;
 }
 
-@media only screen and (min-width: 920px){
-    .navbar{
+@media only screen and (min-width: 920px) {
+    .navbar {
         padding: .5rem 5rem;
     }
 }
 
-@media only screen and (min-width: 620px){
-
-}
+@media only screen and (min-width: 620px) {}
 
 .table-bordered thead th {
     border-bottom-width: 1px;
@@ -85,9 +84,11 @@ th.min{
     background-color: #fff;
 }
 
-label{
+label {
     text-transform: lowercase;
 }
-label::first-letter, .uppercase{
+
+label::first-letter,
+.uppercase {
     text-transform: uppercase;
 }
