@@ -111,4 +111,3 @@ ENV/
 migrations
 .vscode/
 secret.py
-utils
