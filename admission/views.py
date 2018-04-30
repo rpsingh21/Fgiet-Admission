@@ -12,7 +12,7 @@ from .forms import (
     BranchFrom
 )
 from .models import Candidate
-from utils.tasks import send_sms
+from utils.tasks import send_sms, convert_thumbnail
 
 def form_view(request):
     candidateForm = CandidateForm(request.POST or None, request.FILES or None)
@@ -31,19 +31,22 @@ def form_view(request):
         'branchFrom':branchFrom
     }
     if request.method == 'POST':
-        if candidateForm.is_valid() and highSchoolForm.is_valid() and intermediateForm.is_valid() and ugOrDiplomaForm.is_valid() and upseeForm.is_valid():    
+        if candidateForm.is_valid() and highSchoolForm.is_valid() and intermediateForm.is_valid() and ugOrDiplomaForm.is_valid() and upseeForm.is_valid():
             instance = candidateForm.save(commit = False)
-            instance.highSchoole = highSchoolForm.save()
+            highSchool = highSchoolForm.save() 
+            instance.highSchoole = highSchool
             instance.intermediate = intermediateForm.save()
             instance.ugOrDiploma = ugOrDiplomaForm.save()
             instance.upsee = upseeForm.save()
             instance.preference = branchFrom.save()
+            instance.registrationNo = "18187"+"{:03}".format(highSchool.id)
             instance.save()
 
             # sending sms to user
-            mgs = "Congratulation! "+instance.name +", your registration is successfully completed and Registration No is : FGIET2018-"+str(instance.id)
-            
+            mgs ="Congratulation! "+instance.name+", Your registration is successfully completed and Registration No is: "+instance.registrationNo
             send_sms.delay(instance.mobileNo,mgs)
+            convert_thumbnail.delay(instance.image.path, (420,560))
+            convert_thumbnail.delay(instance.signImage.path,(560, 160))
 
             # return responce 
             request.session['pk'] = instance.id

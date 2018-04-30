@@ -1,4 +1,4 @@
-var MAX_SIZE = 200*1024
+var MAX_SIZE = 720*1024
 var ugOrDiplompassing = ['id_ugOrDiplompassingYear','id_ugOrDiplomBoard','id_ugOrDiplomBranch','id_ugOrDiplomPercentageMarks','id_ugOrDiplomResultimage']
 var intermediatePassing =['id_intermediatePassingYear','id_intermediateBoard','id_intermediatePercentageMarks','id_intermediateResultImage']
 var mcaFields = ['id_math','id_physics','id_chemistry']

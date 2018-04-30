@@ -1,4 +1,4 @@
-from __future__ import absolute_import, unicode_literals
+from PIL import Image
 from celery.decorators import task
 from .way2sms import Sms
 
@@ -8,3 +8,9 @@ def send_sms(phone, message):
     res = sms.send(phone,message)
     sms.logout()
     return res
+
+@task(name="convert thumbnail image")
+def convert_thumbnail(path, size):
+    img = Image.open(path)
+    img.thumbnail(size)
+    img.save(path, img.format, quality=0)

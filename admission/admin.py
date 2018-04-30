@@ -3,8 +3,8 @@ from django.contrib import admin
 from .models import HighSchool, Intermediate, Upsee, Candidate, UgOrDiploma, Branch
 
 class CandidateModelAdmin(admin.ModelAdmin):
-    list_display = ['name','applyYear','aadharNo','fatherName','mobileNo','category','address','course']
-    search_fields = ['name','address']
+    list_display = ['registrationNo','name','applyYear','aadharNo','fatherName','mobileNo','category','address','course']
+    search_fields = ['registrationNo','name','fatherName','address']
 
 class HighSchoolModelAdmin(admin.ModelAdmin):
     list_display = ['highSchoolPassingYear','highSchoolBoard','highSchoolRollNo','highSchoolPercentageMarks']

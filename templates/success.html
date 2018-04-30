@@ -28,13 +28,19 @@
                     <th colspan="6" class="uppercase text-center text-success">APPLICATION DETAILS</th>
                 </tr>
                 <tr>
-                    <td colspan="2" rowspan="4" class="w-25">
+                    <td colspan="2" rowspan="5" class="w-25">
                         <img class="img-fluid" src="{{ instance.image.url }}" />
                     </td>
                     <th>Apply Year</th>
                     <td>{{ instance.applyYear }}</td>
                     <th>Course</th>
                     <td>{{ instance.course }}</td>
+                </tr>
+                <tr>
+                    <th class="min">Registration No</th>
+                    <td>18187{{ instance.id }}</td>
+                    <th class="min">Apply At</th>
+                    <td>{{ instance.timeStamp }}</td>
                 </tr>
                 <tr>
                     <th class="min">Applicant's Name </th>
@@ -54,20 +60,18 @@
                 </tr>
                 <tr>
                     <td class="w-25" colspan="2">
-                        <img class="mw-100" height="50px"src="{{ instance.signImage.url }}" />
+                        <img class="mw-100" height="45px"src="{{ instance.signImage.url }}" />
                     </td>
                     <th >Mobile No </th>
                     <td>{{ instance.mobileNo }}</td>
-                    <th>Email</th>
-                    <td>{{ instance.email}}</td>
+                    <th>gender</th>
+                    <td>{{ instance.gender}}</td>
                 </tr>
                 <tr>
                     <th>Category</th>
                     <td>{{ instance.category}}</td>
-                    <th>gender</th>
-                    <td>{{ instance.gender}}</td>
-                    <th>Registration No </th>
-                    <td>18187{{ instance.id }}</td>
+                    <th>Email</th>
+                    <td colspan="3">{{ instance.email}}</td>
                 </tr>
                 <tr>
                     <th colspan="6" class="text-center text-success uppercase">ACCADMIC DETAILS</th>
@@ -104,11 +108,24 @@
                     <td>{{ instance.ugOrDiploma.ugOrDiplomBoard }}</td>
                     <td>{{ instance.ugOrDiploma.ugOrDiplomPercentageMarks }}</td>
                 </tr>
+                {% if instance.course == 'BTech' %}
+                <tr>
+                    <th colspan="6" class="text-center text-success">YOUR BRANCH PREFERANCES</th>
+                </tr>
+                <tr>
+                    <td>#</td>
+                    <td><b>1. </b>{{ instance.preference.first }}</td>
+                    <td><b>2. </b>{{ instance.preference.second }}</td>
+                    <td><b>3. </b>{{ instance.preference.third }}</td>
+                    <td><b>4. </b>{{ instance.preference.fourth }}</td>
+                    <td></td>
+                </tr>
+                {% endif %}
             </table>
         </div>
         {% if request.user.is_authenticated %}
         <div class="no-print m-3 mt-5">
-            <div class="row">
+            <div class="row justify-content-around">
                 {% if instance.highSchoole.highSchoolResultImage %}
                 <div class="col-md-4 card p-2">
                     <a target="_blank" href="{{ instance.highSchoole.highSchoolResultImage.url }}">

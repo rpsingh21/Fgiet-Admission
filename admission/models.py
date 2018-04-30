@@ -96,8 +96,9 @@ class Branch(models.Model):
 
 # Condidate pername details
 class Candidate(models.Model):
+    registrationNo = models.CharField(max_length=16, blank=True, null=True)
     applyYear = models.CharField(max_length= 16, choices= apply_year)
-    aadharNo = models.CharField(max_length=16,unique=True)
+    aadharNo = models.CharField(max_length=16)
     gender = models.CharField(max_length= 8, choices= gender_choices)
     name = models.CharField(max_length=64)
     email = models.CharField(max_length=64)
@@ -115,7 +116,7 @@ class Candidate(models.Model):
     ugOrDiploma = models.ForeignKey(UgOrDiploma, on_delete = models.CASCADE)
     upsee = models.ForeignKey(Upsee, on_delete = models.CASCADE)
     preference = models.ForeignKey(Branch, on_delete = models.CASCADE)
-    
+
     image = models.ImageField(upload_to=upload_location)
     signImage = models.ImageField(upload_to=upload_location)
     timeStamp = models.DateTimeField(auto_now_add=True)
