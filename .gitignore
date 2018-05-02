@@ -111,3 +111,4 @@ ENV/
 migrations
 .vscode/
 secret.py
+fgietAdmission/settings/local.py

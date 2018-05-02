@@ -9,7 +9,7 @@ def send_sms(phone, message):
     sms.logout()
     return res
 
-@task(name="convert thumbnail image")
+@task(name="convert_thumbnail_image")
 def convert_thumbnail(path, size):
     img = Image.open(path)
     img.thumbnail(size)
