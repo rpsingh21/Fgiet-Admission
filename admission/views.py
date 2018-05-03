@@ -49,25 +49,19 @@ def form_view(request,year,course):
         vaild = True
         if not candidateForm.is_valid() and highSchoolForm.is_valid() and upseeForm.is_valid:
             vaild = False
-        print(vaild, 1)
         if not year=='2' and course=='BTech':
             if not intermediateForm.is_valid():
                 vaild = False
-        print(vaild, 2)
         if not course == 'MCA':
             if not branchFrom.is_valid():
                 vaild = False
-        print(vaild, 3)
         if year=='1' and course=='BTech':
             print(vaild,'p',4)
             if not pcmForm.is_valid():
                 vaild = False
-                print(vaild, 4)
         else:
             if not ugOrDiplomaForm.is_valid():
                 vaild = False
-        print("----------------------------------------------")
-        print(vaild,5)
         if vaild:
             instance = candidateForm.save()
             instance.registrationNo = "18187"+"{:03}".format(instance.id)
@@ -77,7 +71,6 @@ def form_view(request,year,course):
             temp = None
             if not (course == 'BTech' and year == '2'):
                 temp = save_with_key(intermediateForm, instance)
-                print("Intermeiate form value")
                 if course == 'BTech' and year == '1':
                     pcm = pcmForm.save(commit=False)
                     pcm.intermediate = temp

@@ -1,4 +1,4 @@
-var MAX_SIZE = 720*1024
+var MAX_SIZE = 360*1024
 var ugOrDiplompassing = ['id_ugOrDiplompassingYear','id_ugOrDiplomBoard','id_ugOrDiplomBranch','id_ugOrDiplomPercentageMarks','id_ugOrDiplomResultimage']
 var intermediatePassing =['id_intermediatePassingYear','id_intermediateBoard','id_intermediatePercentageMarks','id_intermediateResultImage']
 var mcaFields = ['id_math','id_physics','id_chemistry']
@@ -11,7 +11,7 @@ function ValidateFileUpload(ele_id) {
     }
     else {
         var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-        if (Extension == "gif" || Extension == "png"|| Extension == "jpeg" || Extension == "jpg") {
+        if (Extension == "png"|| Extension == "jpeg" || Extension == "jpg") {
             if (fuData.files && fuData.files[0]) {
                 var size = fuData.files[0].size;
                 console.log(size);
@@ -30,60 +30,8 @@ function ValidateFileUpload(ele_id) {
             }
         } 
     else {
-            alert("Photo only allows file types of GIF, PNG, JPG, JPEG");
+            alert("Photo only allows file types of PNG, JPG, JPEG");
             fuData.value = "";
-        }
-    }
-}
-
-function changeRequirment(){
-    var year = document.getElementById("id_applyYear").value;
-    var course = document.getElementById("id_course").value;
-    $("#ug").show("slow");
-    if(course == "MCA"){
-        for(var id in mcaFields){
-            document.getElementById(mcaFields[id]).parentNode.hidden = true;
-        }
-        document.getElementById("branch").hidden = true;
-    }
-    else{
-        for(var id in mcaFields){
-            document.getElementById(mcaFields[id]).parentNode.hidden = false;
-        }
-    }
-    if(year == "1" && course == "MCA"){
-        for(var id in ugOrDiplompassing){
-            document.getElementById(ugOrDiplompassing[id]).required = true;
-        }
-        for(var id in intermediatePassing){
-            document.getElementById(intermediatePassing[id]).required = true;
-        }
-    }
-    else if(year == 2 && course == "BTech"){
-        document.getElementById("branch").hidden = false;
-        for(var id in ugOrDiplompassing){
-            document.getElementById(ugOrDiplompassing[id]).required = true;
-        }
-        for(var id in intermediatePassing){
-            document.getElementById(intermediatePassing[id]).required = false;
-        }
-    }
-    else if(year == 1 && course == "BTech"){
-        document.getElementById("branch").hidden = false;
-        for(var id in ugOrDiplompassing){
-            document.getElementById(ugOrDiplompassing[id]).required = false;
-        }
-        for(var id in intermediatePassing){
-            document.getElementById(intermediatePassing[id]).required = true;
-        }
-        $("#ug").hide("slow");
-    }
-    else{
-        for(var id in ugOrDiplompassing){
-            document.getElementById(ugOrDiplompassing[id]).required = true;
-        }
-        for(var id in intermediatePassing){
-            document.getElementById(intermediatePassing[id]).required = true;
         }
     }
 }
@@ -92,16 +40,10 @@ $("document").ready(function(){
     $("input[type=file]").change(function(){
         ValidateFileUpload(this.id);
     });
-    
-    $("#id_applyYear").change(function(){
-        if(document.getElementById("id_course").value){
-            changeRequirment();
-        }
-    });
+    $("#id_applyYear").val(year);
+    $("#id_course").val(course);
+    $("#id_applyYear").parent().parent().hide();
+    $("#id_course").parent().parent().hide();
 
-    $("#id_course").change(function(){
-        if(document.getElementById("id_applyYear").value){
-            changeRequirment();
-        }
-    })
+    $("input[type=select").addClass('custom-select');
 });

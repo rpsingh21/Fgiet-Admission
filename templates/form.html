@@ -9,7 +9,7 @@
     <div class="myCard mb-3">
         <div class="center border rounded">
             <img class="d-none pt-1 mx-auto d-md-block img-fluid" src="/media/img/logo.png" alt="fgiet logo"/>
-            <p class="mt-1 text-danger text-center"><b >APPLICATION FORM ( session : 2018-2019 )</b></p>
+            <p class="mt-1 text-success text-center"><b >APPLICATION FORM ( session : 2018-2019 )</b></p>
         </div>
     </div>
     <div class="myCard">
@@ -187,7 +187,8 @@
     });
 </script>
 <script>
-    var year="{{ type.year }}"
-    var course = "{{ type.course }}"
+    var year="{{ type.year }}";
+    var course = "{{ type.course }}";
 </script>
+<script src="{% static '/js/form.js' %}" type="text/javascript"></script>
 {% endblock %}

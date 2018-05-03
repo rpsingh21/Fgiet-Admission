@@ -10,6 +10,7 @@ from .models import (
     Branch
 )
 
+
 class CandidateForm(forms.ModelForm):
 
     class Meta:
@@ -47,13 +48,23 @@ class CandidateForm(forms.ModelForm):
             'signImage':'Upload sigature of Applicant',
         }
         help_texts = {
-            
+            'image':'max size of image is 200 KB',
+            'signImage':'max size of signater image is 100 KB',
         }
+
+    def clean_aadharNo(self):
+        aadharNo = self.cleaned_data['aadharNo']
+        if aadharNo.isdigit():
+            return aadharNo
+        raise forms.ValidationError('Eneter a vaild Aadhar no.')
     
-    # def __init__(self, year, course,*args, **kwargs):
-    #     super(CandidateForm, self).__init__( *args, **kwargs)
-    #     self.fields['course'] = course
-    #     self.fields['applyYear'] = year
+    def clean_mobileNo(self):
+        mobileNo = self.cleaned_data['mobileNo']
+        if len(mobileNo) ==10 and mobileNo.isdigit():
+            return mobileNo
+        raise forms.ValidationError('Mobile no. must be contain 10 digite')
+
+
 
 class HomeForm(forms.ModelForm):
 
@@ -67,6 +78,7 @@ class HomeForm(forms.ModelForm):
             "applyYear":"Apply Year",
             "course":"Apply Course",
         }
+
 
 class HighSchoolForm(forms.ModelForm):
 
@@ -86,6 +98,16 @@ class HighSchoolForm(forms.ModelForm):
             'highSchoolPercentageMarks':'Percentage Marks',
             'highSchoolResultImage':'upload marksheet photograph',
         }
+        help_texts ={
+            'highSchoolResultImage':'Image max size is  350 KB',
+        }
+
+    def clean_highSchoolRollNo(self):
+        highSchoolRollNo = self.cleaned_data['highSchoolRollNo']
+        if highSchoolRollNo.isdigit():
+            return highSchoolRollNo
+        raise forms.ValidationError('Enter valid Roll no.')
+
 
 class IntermediateForm(forms.ModelForm):
 
@@ -105,7 +127,17 @@ class IntermediateForm(forms.ModelForm):
             'intermediatePercentageMarks':'Percentage Marks',
             'intermediateResultImage':'upload marksheet photograph',
         }
-    
+        help_texts ={
+            'intermediateResultImage':'Image max size is 350 KB',
+        }
+
+    def clean_intermediateRollNo(self):
+        intermediateRollNo = self.cleaned_data['intermediateRollNo']
+        if intermediateRollNo.isdigit():
+            return intermediateRollNo
+        raise forms.ValidationError('Enter valid Roll no.')
+
+
 class PCMForm(forms.ModelForm):
 
     class Meta:
@@ -141,21 +173,38 @@ class UgOrDiplomaForm(forms.ModelForm):
             'ugOrDiplomPercentageMarks':'Percentage Marks',
             'ugOrDiplomResultimage':'upload marksheet photograph'
         }
+        help_texts ={
+            'ugOrDiplomResultimage':'Image max size is 350 KB',
+        }
+
+    def clean_ugOrDiplomRollNo(self):
+        ugOrDiplomRollNo = self.cleaned_data['ugOrDiplomRollNo']
+        if ugOrDiplomRollNo.isdigit():
+            return ugOrDiplomRollNo
+        raise forms.ValidationError('Enter valid Roll no.')
+
 
 class UpseeForm(forms.ModelForm):
 
     class Meta:
         model = Upsee
         fields = [
-            'rank',
-            'catRank',
             'upseeRollNo',
+            'rank',
+            'catRank'
         ]
         labels = {
             'rank':'Applicant Upsee Rank',
             'catRank':'Applicant category rank',
             'upseeRollNo':'Applicant Upsee Roll No.'
         }
+
+    def clean_upseeRollNo(self):
+        upseeRollNo = self.cleaned_data['upseeRollNo']
+        if upseeRollNo.isdigit():
+            return upseeRollNo
+        raise forms.ValidationError('Enter valid Roll no.')
+
 
 class BranchFrom(forms.ModelForm):
 
