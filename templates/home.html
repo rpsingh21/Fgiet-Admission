@@ -1,4 +1,59 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% block title %}{{ title  }}{% endblock %}
 {% block content %}
-<h1>hello this is working now !</h1>
+<div class="container">
+    <div class="myCard mb-3">
+        <div class="center border rounded">
+            <img class="d-none pt-1 mx-auto d-md-block img-fluid" src="/media/img/logo.png" alt="fgiet logo"/>
+            <p class="mt-1 text-danger text-center"><b >APPLICATION FORM ( session : 2018-2019 )</b></p>
+        </div>
+    </div>
+    <div class="myCard">
+        <div class="card mb-4">
+            <div class="card-header uppercase">
+                <b class="text-primary" >Plz read some Importemt Notes</b>
+            </div>
+            <div class="card-body">
+                <p>This website made by Compuet Science and Engg department</p>
+                <p>This website made by Compuet Science and Engg department</p>
+                <p>This website made by Compuet Science and Engg department</p>
+                <p>This website made by Compuet Science and Engg department</p>
+                <p>This website made by Compuet Science and Engg department</p>
+                <p>This website made by Compuet Science and Engg department</p>
+            </div>
+        </div>
+        <form class="text-primary" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card mb-4">
+                <div class="card-header uppercase">
+                    <b>Select apply year and course</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for field in homeForm.visible_fields %}
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                {{ field | add_class:'form-control' }}
+                                <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
+                                {% for error in field.errors %}
+                                <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="centerD pb-4">
+                <button class="btn btn-success" type="submit"> Submit Form </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %} {% block js %}
+<script src="{% static 'js/form.js' %}"></script>
 {% endblock %}

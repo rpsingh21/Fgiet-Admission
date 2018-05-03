@@ -4,43 +4,88 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 from .forms import (
+    HomeForm,
     CandidateForm,
     UpseeForm,
     UgOrDiplomaForm,
     IntermediateForm,
+    PCMForm,
     HighSchoolForm,
     BranchFrom
 )
 from .models import Candidate
 from utils.tasks import send_sms, convert_thumbnail
 
-def form_view(request):
+def home_view(request):
+    homeForm = HomeForm(request.POST or None)
+    if request.method == 'POST':
+        if homeForm.is_valid():
+            year = request.POST.get('applyYear')
+            course = request.POST.get('course')
+            return redirect(reverse('admission:form',kwargs={'year':year,'course':course}))
+    content = {
+        'title': 'Home',
+        'homeForm' : homeForm
+    }
+    return render(request, 'home.html', content)
+
+def save_with_key(formValue, key):
+    temp = formValue.save(commit=False)
+    temp.candidate = key
+    temp.save()
+    return temp
+
+def form_view(request,year,course):
     candidateForm = CandidateForm(request.POST or None, request.FILES or None)
     highSchoolForm = HighSchoolForm(request.POST or None, request.FILES or None)
     intermediateForm = IntermediateForm(request.POST or None, request.FILES or None)
+    pcmForm = PCMForm(request.POST or None)
     ugOrDiplomaForm = UgOrDiplomaForm(request.POST or None, request.FILES or None)
     upseeForm = UpseeForm(request.POST or None, request.FILES or None)
     branchFrom = BranchFrom(request.POST or None, request.FILES or None)
-    content = {
-        'title' : 'Admission Form',
-        'candidateForm' : candidateForm,
-        'highSchoolForm' : highSchoolForm,
-        'intermediateForm' : intermediateForm,
-        'ugOrDiplomaForm' : ugOrDiplomaForm,
-        'upseeForm' : upseeForm,
-        'branchFrom':branchFrom
-    }
+
     if request.method == 'POST':
-        if candidateForm.is_valid() and highSchoolForm.is_valid() and intermediateForm.is_valid() and ugOrDiplomaForm.is_valid() and upseeForm.is_valid():
-            instance = candidateForm.save(commit = False)
-            highSchool = highSchoolForm.save() 
-            instance.highSchoole = highSchool
-            instance.intermediate = intermediateForm.save()
-            instance.ugOrDiploma = ugOrDiplomaForm.save()
-            instance.upsee = upseeForm.save()
-            instance.preference = branchFrom.save()
-            instance.registrationNo = "18187"+"{:03}".format(highSchool.id)
+        # checking vaildtion
+        vaild = True
+        if not candidateForm.is_valid() and highSchoolForm.is_valid() and upseeForm.is_valid:
+            vaild = False
+        print(vaild, 1)
+        if not year=='2' and course=='BTech':
+            if not intermediateForm.is_valid():
+                vaild = False
+        print(vaild, 2)
+        if not course == 'MCA':
+            if not branchFrom.is_valid():
+                vaild = False
+        print(vaild, 3)
+        if year=='1' and course=='BTech':
+            print(vaild,'p',4)
+            if not pcmForm.is_valid():
+                vaild = False
+                print(vaild, 4)
+        else:
+            if not ugOrDiplomaForm.is_valid():
+                vaild = False
+        print("----------------------------------------------")
+        print(vaild,5)
+        if vaild:
+            instance = candidateForm.save()
+            instance.registrationNo = "18187"+"{:03}".format(instance.id)
             instance.save()
+            save_with_key(highSchoolForm, instance)
+            save_with_key(upseeForm, instance)
+            temp = None
+            if not (course == 'BTech' and year == '2'):
+                temp = save_with_key(intermediateForm, instance)
+                print("Intermeiate form value")
+                if course == 'BTech' and year == '1':
+                    pcm = pcmForm.save(commit=False)
+                    pcm.intermediate = temp
+                    pcm.save()
+            if not (course == 'BTech' and year == '1'):
+                save_with_key(ugOrDiplomaForm, instance)
+            if course == 'BTech':
+                save_with_key(branchFrom, instance)
 
             # sending sms to user
             mgs ="Congratulation! "+instance.name+", Your registration is successfully completed and Registration No is: "+instance.registrationNo
@@ -52,6 +97,20 @@ def form_view(request):
             request.session['pk'] = instance.id
             request.session['aadhar'] = instance.aadharNo
             return redirect(reverse('admission:success'))
+    content = {
+        'title' : 'Admission Form',
+        'candidateForm' : candidateForm,
+        'highSchoolForm' : highSchoolForm,
+        'intermediateForm' : intermediateForm,
+        'pcmForm' : pcmForm,
+        'ugOrDiplomaForm' : ugOrDiplomaForm,
+        'upseeForm' : upseeForm,
+        'branchFrom':branchFrom,
+        'type':{
+            'year':year,
+            'course':course
+        }
+    }
     return render(request,'form.html',content)
 
 def success_view(request):

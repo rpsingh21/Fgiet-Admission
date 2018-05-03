@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 {% load crispy_forms_tags %}
+{% load my_filters %}
 {% block title %}{{ title  }}{% endblock %}
 {% block content %}
 <div class="container">
@@ -60,6 +61,7 @@
                 </div>
             </div>
 
+            {% if not type|is_deploma %}
             <!-- Appicant inter mediate details -->
             <div class="card mb-4">
                 <div class="card-header uppercase">
@@ -79,10 +81,25 @@
                             </div>
                         </div>
                         {% endfor %}
+                        {% if not type|is_mca %}
+                            {% for field in pcmForm.visible_fields %}
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="{{ field.id_for_label }}">{{ field.label | title }}</label>
+                                    {{ field | add_class:'form-control' }} 
+                                    <small for="{{ field.id_for_help_text }}" class="form-text text-muted">{{ field.help_text }}</small>
+                                    {% for error in field.errors %}
+                                    <span class="help-block">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
                     </div> 
                 </div>
             </div>
-
+            {% endif %}
+            {% if not type|is_first_year %}
             <!-- Appicant inter ug / diploma details -->
             <div id ="ug" class="card mb-4">
                 <div class="card-header uppercase">
@@ -105,8 +122,10 @@
                     </div> 
                 </div>
             </div>
+            {% endif %}
 
             <!-- Appicant Branch Preferances -->
+            {% if not type|is_mca %}
             <div id="branch" class="card mb-4">
                 <div class="card-header uppercase">
                     <b>Your Branch Preferances</b>
@@ -128,6 +147,7 @@
                     </div> 
                 </div>
             </div>
+            {% endif %}
 
             <!-- Appicant upsee details -->
             <div class="card mb-4">
@@ -166,5 +186,8 @@
         uiLibrary: 'bootstrap4'
     });
 </script>
-<script src="{% static 'js/form.js' %}"></script>
+<script>
+    var year="{{ type.year }}"
+    var course = "{{ type.course }}"
+</script>
 {% endblock %}

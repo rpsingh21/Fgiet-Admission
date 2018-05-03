@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% block title %}{{ instance.name|title }} Print Form{% endblock %}
+{% block title %}{{ instance.name|title }} Form{% endblock %}
 {% block content %}
 <div class="container">
     {% if instance.applicant %}
@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <th class="min">Registration No</th>
-                    <td>18187{{ instance.id }}</td>
+                    <td>{{ instance.registrationNo }}</td>
                     <th class="min">Apply At</th>
                     <td>{{ instance.timeStamp }}</td>
                 </tr>
@@ -56,7 +56,7 @@
                 </tr>
                 <tr>
                     <th class="min">Address </th>
-                    <td colspan="3">{{ instance.address }}</td>
+                    <td colspan="3">{{ instance.address|truncatechars:76 }}</td>
                 </tr>
                 <tr>
                     <td class="w-25" colspan="2">
@@ -80,44 +80,44 @@
                     <th scope="col">#</th>
                     <th scope="col">Examination</th>
                     <th scope="col">Passing Year</th>
-                    <th scope="col">Roll No</th>
                     <th scope="col">Board / University</th>
+                    <th scope="col">Roll No</th>
                     <th scope="col">Marks</th>
                 </tr>
                 <tr>
                     <th scope="row">1</th>
                     <td>High School</td>
-                    <td>{{ instance.highSchoole.highSchoolPassingYear }}</td>
-                    <td>{{ instance.highSchoole.highSchoolRollNo }}</td>
-                    <td>{{ instance.highSchoole.highSchoolBoard }}</td>
-                    <td>{{ instance.highSchoole.highSchoolPercentageMarks }}</td>
+                    <td>{{ instance.hs.highSchoolPassingYear }}</td>
+                    <td>{{ instance.hs.highSchoolBoard|truncatechars:36 }}</td>
+                    <td>{{ instance.hs.highSchoolRollNo }}</td>
+                    <td>{{ instance.hs.highSchoolPercentageMarks }}</td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>Intermediate</td>
-                    <td>{{ instance.intermediate.intermediatePassingYear }}</td>
-                    <td>{{ instance.intermediate.intermediateRollNo }}</td>
-                    <td>{{ instance.intermediate.intermediateBoard }}</td>
-                    <td>{{ instance.intermediate.intermediatePercentageMarks }}</td>
+                    <td>{{ instance.inter.intermediatePassingYear }}</td>
+                    <td>{{ instance.inter.intermediateBoard|truncatechars:36 }}</td>
+                    <td>{{ instance.inter.intermediateRollNo }}</td>
+                    <td>{{ instance.inter.intermediatePercentageMarks }}</td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
                     <td>Ug / Diploma</td>
-                    <td>{{ instance.ugOrDiploma.ugOrDiplompassingYear }}</td>
-                    <td>{{ instance.ugOrDiploma.ugOrDiplomRollNo }}</td>
-                    <td>{{ instance.ugOrDiploma.ugOrDiplomBoard }}</td>
-                    <td>{{ instance.ugOrDiploma.ugOrDiplomPercentageMarks }}</td>
+                    <td>{{ instance.ug.ugOrDiplompassingYear }}</td>
+                    <td>{{ instance.ug.ugOrDiplomBoard|truncatechars:36 }}</td>
+                    <td>{{ instance.ug.ugOrDiplomRollNo }}</td>
+                    <td>{{ instance.ug.ugOrDiplomPercentageMarks }}</td>
                 </tr>
                 {% if instance.course == 'BTech' %}
                 <tr>
                     <th colspan="6" class="text-center text-success">YOUR BRANCH PREFERANCES</th>
                 </tr>
                 <tr>
-                    <td>#</td>
-                    <td><b>1. </b>{{ instance.preference.first }}</td>
-                    <td><b>2. </b>{{ instance.preference.second }}</td>
-                    <td><b>3. </b>{{ instance.preference.third }}</td>
-                    <td><b>4. </b>{{ instance.preference.fourth }}</td>
+                    <th>#</th>
+                    <td><b>1. </b>{{ instance.cbranch.first }}</td>
+                    <td><b>2. </b>{{ instance.cbranch.second }}</td>
+                    <td><b>3. </b>{{ instance.cbranch.third }}</td>
+                    <td><b>4. </b>{{ instance.cbranch.fourth }}</td>
                     <td></td>
                 </tr>
                 {% endif %}
@@ -126,24 +126,24 @@
         {% if request.user.is_authenticated %}
         <div class="no-print m-3 mt-5">
             <div class="row justify-content-around">
-                {% if instance.highSchoole.highSchoolResultImage %}
+                {% if instance.hs.highSchoolResultImage %}
                 <div class="col-md-4 card p-2">
-                    <a target="_blank" href="{{ instance.highSchoole.highSchoolResultImage.url }}">
-                        <img class="img-fluid" src="{{ instance.highSchoole.highSchoolResultImage.url }}"/>
+                    <a target="_blank" href="{{ instance.hs.highSchoolResultImage.url }}">
+                        <img class="img-fluid" src="{{ instance.hs.highSchoolResultImage.url }}"/>
                     </a>
                 </div>
                 {% endif %}
-                {% if instance.intermediate.intermediateResultImage %}
+                {% if instance.inter.intermediateResultImage %}
                 <div class="col-md-4 card p-2">
-                    <a target="_blank" href="{{instance.intermediate.intermediateResultImage.url}}">
-                        <img class="img-fluid" src="{{ instance.intermediate.intermediateResultImage.url }}"/>
+                    <a target="_blank" href="{{instance.inter.intermediateResultImage.url}}">
+                        <img class="img-fluid" src="{{ instance.inter.intermediateResultImage.url }}"/>
                     </a>
                 </div>
                 {% endif %}
-                {% if instance.ugOrDiploma.ugOrDiplomResultimage %}
+                {% if instance.ug.ugOrDiplomResultimage %}
                 <div class="col-md-4 card p-2">
-                    <a target="_blank" href="{{instance.ugOrDiploma.ugOrDiplomResultimage.url}}">
-                        <img class="img-fluid" src="{{ instance.ugOrDiploma.ugOrDiplomResultimage.url }}"/>
+                    <a target="_blank" href="{{instance.ug.ugOrDiplomResultimage.url}}">
+                        <img class="img-fluid" src="{{ instance.ug.ugOrDiplomResultimage.url }}"/>
                     </a>
                 </div>
                 {% endif %}

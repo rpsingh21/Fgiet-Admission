@@ -3,7 +3,7 @@
 vEnv/
 static_cdn/
 node_modules/
-db.sqlite3
+*.sqlite3
 # resultanalysis/resultanalysis/setting.py
 resultanalysis/db.sqlite3
 resultAnalysis/result/migrations/
