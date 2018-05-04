@@ -14,7 +14,7 @@ from .forms import (
     BranchFrom
 )
 from .models import Candidate
-from utils.tasks import send_sms, convert_thumbnail
+from utils.tasks import send_sms, convert_thumbnail, send_email
 
 def home_view(request):
     homeForm = HomeForm(request.POST or None)
@@ -56,7 +56,6 @@ def form_view(request,year,course):
             if not branchFrom.is_valid():
                 vaild = False
         if year=='1' and course=='BTech':
-            print(vaild,'p',4)
             if not pcmForm.is_valid():
                 vaild = False
         else:
@@ -80,11 +79,16 @@ def form_view(request,year,course):
             if course == 'BTech':
                 save_with_key(branchFrom, instance)
 
-            # sending sms to user
+            # sending sms and email to user
             mgs ="Congratulation! "+instance.name+", Your registration is successfully completed and Registration No is: "+instance.registrationNo
             send_sms.delay(instance.mobileNo,mgs)
             convert_thumbnail.delay(instance.image.path, (420,560))
             convert_thumbnail.delay(instance.signImage.path,(560, 160))
+            mail_context = {
+                'name':instance.name,
+                'registrationNo':instance.registrationNo
+            }
+            send_email.delay('FGIET Adnission registration','', 'mails/success_mail.html', mail_context,None,[instance.email])
 
             # return responce 
             request.session['pk'] = instance.id

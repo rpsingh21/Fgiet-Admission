@@ -1,4 +1,6 @@
 from django import forms
+from django.conf import settings
+from django.template.defaultfilters import filesizeformat
 
 from .models import (
     Candidate,
@@ -48,7 +50,7 @@ class CandidateForm(forms.ModelForm):
             'signImage':'Upload sigature of Applicant',
         }
         help_texts = {
-            'image':'max size of image is 200 KB',
+            'image':'max size of image is 100 KB',
             'signImage':'max size of signater image is 100 KB',
         }
 
@@ -63,6 +65,22 @@ class CandidateForm(forms.ModelForm):
         if len(mobileNo) ==10 and mobileNo.isdigit():
             return mobileNo
         raise forms.ValidationError('Mobile no. must be contain 10 digite')
+
+    def clean_signImage(self):
+            signImage = self.cleaned_data['signImage']
+            size = getattr(signImage, '_size', 0)
+            if size > settings.MAX_UPLOAD_SIZE:
+                raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
+                    filesizeformat(settings.MAX_UPLOAD_SIZE//2), filesizeformat(size)))
+            return signImage
+
+    def clean_image(self):
+            image = self.cleaned_data['image']
+            size = getattr(image, '_size', 0)
+            if size > settings.MAX_UPLOAD_SIZE:
+                raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
+                    filesizeformat(settings.MAX_UPLOAD_SIZE//2), filesizeformat(size)))
+            return image 
 
 
 
@@ -99,8 +117,16 @@ class HighSchoolForm(forms.ModelForm):
             'highSchoolResultImage':'upload marksheet photograph',
         }
         help_texts ={
-            'highSchoolResultImage':'Image max size is  350 KB',
+            'highSchoolResultImage':'Image max size is  200 KB',
         }
+
+    def clean_highSchoolResultImage(self):
+            image = self.cleaned_data['highSchoolResultImage']
+            size = getattr(image, '_size', 0)
+            if size > settings.MAX_UPLOAD_SIZE:
+                raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
+                    filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(size)))
+            return image 
 
     def clean_highSchoolRollNo(self):
         highSchoolRollNo = self.cleaned_data['highSchoolRollNo']
@@ -128,7 +154,7 @@ class IntermediateForm(forms.ModelForm):
             'intermediateResultImage':'upload marksheet photograph',
         }
         help_texts ={
-            'intermediateResultImage':'Image max size is 350 KB',
+            'intermediateResultImage':'Image max size is 200 KB',
         }
 
     def clean_intermediateRollNo(self):
@@ -136,6 +162,14 @@ class IntermediateForm(forms.ModelForm):
         if intermediateRollNo.isdigit():
             return intermediateRollNo
         raise forms.ValidationError('Enter valid Roll no.')
+
+    def clean_intermediateResultImage(self):
+            image = self.cleaned_data['intermediateResultImage']
+            size = getattr(image, '_size', 0)
+            if size > settings.MAX_UPLOAD_SIZE:
+                raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
+                    filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(size)))
+            return image 
 
 
 class PCMForm(forms.ModelForm):
@@ -152,6 +186,7 @@ class PCMForm(forms.ModelForm):
             'physics':'Percentage marks in physics',
             'chemistry':'Percentage marks in chemistry'
         }
+
 
 class UgOrDiplomaForm(forms.ModelForm):
 
@@ -174,8 +209,16 @@ class UgOrDiplomaForm(forms.ModelForm):
             'ugOrDiplomResultimage':'upload marksheet photograph'
         }
         help_texts ={
-            'ugOrDiplomResultimage':'Image max size is 350 KB',
+            'ugOrDiplomResultimage':'Image max size is 200 KB',
         }
+
+    def clean_ugOrDiplomResultimage(self):
+            image = self.cleaned_data['ugOrDiplomResultimage']
+            size = getattr(image, '_size', 0)
+            if size > settings.MAX_UPLOAD_SIZE:
+                raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
+                    filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(size)))
+            return image 
 
     def clean_ugOrDiplomRollNo(self):
         ugOrDiplomRollNo = self.cleaned_data['ugOrDiplomRollNo']
