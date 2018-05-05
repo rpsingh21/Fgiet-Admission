@@ -59,7 +59,7 @@ class CandidateForm(forms.ModelForm):
         if aadharNo.isdigit():
             return aadharNo
         raise forms.ValidationError('Eneter a vaild Aadhar no.')
-    
+
     def clean_mobileNo(self):
         mobileNo = self.cleaned_data['mobileNo']
         if len(mobileNo) ==10 and mobileNo.isdigit():
@@ -80,7 +80,7 @@ class CandidateForm(forms.ModelForm):
             if size > settings.MAX_UPLOAD_SIZE:
                 raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
                     filesizeformat(settings.MAX_UPLOAD_SIZE//2), filesizeformat(size)))
-            return image 
+            return image
 
 
 
@@ -126,7 +126,7 @@ class HighSchoolForm(forms.ModelForm):
             if size > settings.MAX_UPLOAD_SIZE:
                 raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
                     filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(size)))
-            return image 
+            return image
 
     def clean_highSchoolRollNo(self):
         highSchoolRollNo = self.cleaned_data['highSchoolRollNo']
@@ -169,7 +169,7 @@ class IntermediateForm(forms.ModelForm):
             if size > settings.MAX_UPLOAD_SIZE:
                 raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
                     filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(size)))
-            return image 
+            return image
 
 
 class PCMForm(forms.ModelForm):
@@ -218,7 +218,7 @@ class UgOrDiplomaForm(forms.ModelForm):
             if size > settings.MAX_UPLOAD_SIZE:
                 raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
                     filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(size)))
-            return image 
+            return image
 
     def clean_ugOrDiplomRollNo(self):
         ugOrDiplomRollNo = self.cleaned_data['ugOrDiplomRollNo']
@@ -265,4 +265,3 @@ class BranchFrom(forms.ModelForm):
             'third':'third prefrance',
             'fourth':'fourth prefrance'
         }
-

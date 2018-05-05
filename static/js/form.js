@@ -48,7 +48,8 @@ $("document").ready(function(){
     $("input[type=select").addClass('custom-select');
 
     $("#form_submit").click(function(){
-        console.log("click");
-        $('#form_model').modal('show');
+        // setTimeout(function(){
+        //     $('#form_model').modal('show');
+        // },300)
     });
 });

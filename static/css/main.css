@@ -1,96 +1,96 @@
 html {
-    height: 100%;
-    box-sizing: border-box;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 body {
-    position: relative;
-    margin: 0;
-    min-height: 100%;
-    padding-bottom: 6rem;
-    background-color: #f8f9fa;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    background-image: url('/media/img/Sports.png');
-    /* background-attachment: fixed; */
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  padding-bottom: 6rem;
+  background-color: #f8f9fa;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-image: url('/media/img/Sports.png');
+  /* background-attachment: fixed; */
 }
 
 .navbar {
-    background-color: white;
-    text-transform: uppercase;
+  background-color: white;
+  text-transform: uppercase;
 }
 
 .centerD {
-    display: table;
-    margin-right: auto;
-    margin-left: auto;
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .center {
-    margin: 0 auto;
-    padding: 0;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .capitalize{
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 th.min {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .details p {
-    border: 1px solid #aaa;
+  border: 1px solid #aaa;
 }
 
 .details b {
-    border: 1px solid #aaa;
+  border: 1px solid #aaa;
 }
 
 .help-block {
-    color: red;
+  color: red;
 }
 
 .myCard {
-    background-color: #fff;
-    padding: 1.5em;
-    padding-bottom: 1em;
-    box-shadow: 0 2px 1em 0 rgba(0, 0, 0, 0.09);
-    border: none;
-    border-radius: 0px;
+  background-color: #fff;
+  padding: 1.5em;
+  padding-bottom: 1em;
+  box-shadow: 0 2px 1em 0 rgba(0, 0, 0, 0.09);
+  border: none;
+  border-radius: 0px;
 }
 
 @media only screen and (min-width: 920px) {
-    .navbar {
-        padding: .5rem 5rem;
-    }
+  .navbar {
+    padding: .5rem 5rem;
+  }
 }
 
 @media only screen and (min-width: 620px) {}
 
 .table-bordered thead th {
-    border-bottom-width: 1px;
+  border-bottom-width: 1px;
 }
 
 .table thead th {
-    vertical-align: bottom;
-    border-bottom: 1px solid #dee2e6;
+  vertical-align: bottom;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    background-color: #fff;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #fff;
 }
 
 label,
 .lowercase {
-    text-transform: lowercase;
+  text-transform: lowercase;
 }
 
 label::first-letter,
 .uppercase {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }

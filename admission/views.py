@@ -47,7 +47,7 @@ def form_view(request,year,course):
     if request.method == 'POST':
         # checking vaildtion
         vaild = True
-        if not candidateForm.is_valid() and highSchoolForm.is_valid() and upseeForm.is_valid:
+        if not (candidateForm.is_valid() and highSchoolForm.is_valid() and upseeForm.is_valid):
             vaild = False
         if not year=='2' and course=='BTech':
             if not intermediateForm.is_valid():
