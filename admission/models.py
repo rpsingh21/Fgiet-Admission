@@ -45,7 +45,7 @@ class Candidate(models.Model):
     name = models.CharField(max_length=64)
     email = models.EmailField(max_length=64)
     fatherName = models.CharField(max_length = 64)
-    dob = models.DateTimeField()
+    dob = models.DateField()
     category = models.CharField(max_length=4, choices = cat_choices)
     address = models.CharField(max_length=256)
     course = models.CharField(max_length=16, choices = course_choices)

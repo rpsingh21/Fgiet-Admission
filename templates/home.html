@@ -13,16 +13,10 @@
     </div>
     <div class="myCard">
         <div class="card mb-4">
-            <div class="card-header uppercase">
-                <b class="text-primary" >Plz read some Importemt Notes</b>
-            </div>
             <div class="card-body">
-                <p>This website made by Compuet Science and Engg department</p>
-                <p>This website made by Compuet Science and Engg department</p>
-                <p>This website made by Compuet Science and Engg department</p>
-                <p>This website made by Compuet Science and Engg department</p>
-                <p>This website made by Compuet Science and Engg department</p>
-                <p>This website made by Compuet Science and Engg department</p>
+                <div class="showdown">
+                {{ siteContent|safe }}
+                </div>
             </div>
         </div>
         <form class="text-primary" method="post" enctype="multipart/form-data">
@@ -54,6 +48,6 @@
         </form>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
 {% block js %}
 {% endblock %}

@@ -14,6 +14,7 @@ from .forms import (
     BranchFrom
 )
 from .models import Candidate
+from account.models import SiteContent
 from utils.tasks import send_sms, convert_thumbnail, send_email
 
 def home_view(request):
@@ -23,8 +24,10 @@ def home_view(request):
             year = request.POST.get('applyYear')
             course = request.POST.get('course')
             return redirect(reverse('admission:form',kwargs={'year':year,'course':course}))
+    siteContent = SiteContent.objects.filter(name='notice_admission').first()
     content = {
         'title': 'Home',
+        'siteContent':siteContent.content,
         'homeForm' : homeForm
     }
     return render(request, 'home.html', content)

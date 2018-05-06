@@ -94,3 +94,7 @@ label::first-letter,
 .uppercase {
   text-transform: uppercase;
 }
+
+.showdown p{
+  text-align: justify;
+}

@@ -26,3 +26,10 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+class SiteContent(models.Model):
+    name = models.CharField(max_length=32, unique=True)
+    content = models.TextField()
+    timeStamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

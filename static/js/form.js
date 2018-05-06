@@ -44,6 +44,12 @@ $("document").ready(function(){
     $("#id_course").val(course);
     $("#id_applyYear").parent().parent().hide();
     $("#id_course").parent().parent().hide();
+    $("#id_aadharNo").attr('type','number');
+    $("#id_mobileNo").attr('pattern','[0-9]{10}');
+    $("#id_highSchoolRollNo").attr('type','number');
+    $("#id_intermediateRollNo").attr('type','number');
+    $("#id_ugOrDiplomRollNo").attr('type','number');
+    $("#id_upseeRollNo").attr('type','number');
 
     $("input[type=select").addClass('custom-select');
 

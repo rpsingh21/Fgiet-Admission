@@ -14,7 +14,7 @@ from .models import (
 
 
 class CandidateForm(forms.ModelForm):
-
+    
     class Meta:
         model = Candidate
         fields = [
