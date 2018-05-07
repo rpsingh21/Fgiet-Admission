@@ -58,7 +58,7 @@ class Candidate(models.Model):
     def __str__(self):
         return str(self.id)
 
-# high school details model 
+# high school details model
 class HighSchool(models.Model):
     candidate = models.OneToOneField(Candidate, on_delete=models.CASCADE,related_name="hs")
     highSchoolPassingYear = models.CharField(max_length= 16, choices=passing_year)
@@ -70,7 +70,7 @@ class HighSchool(models.Model):
     def __str__(self):
         return self.candidate.registrationNo
 
-# Intermediate details model 
+# Intermediate details model
 class Intermediate(models.Model):
     candidate = models.OneToOneField(Candidate, on_delete=models.CASCADE, related_name="inter")
     intermediatePassingYear = models.CharField(max_length= 16, choices=passing_year)
