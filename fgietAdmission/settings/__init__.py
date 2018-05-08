@@ -2,6 +2,6 @@ from .base import *
 from .prod import *
 
 try:
-    from .local1 import *
+    from .local import *
 except:
     pass

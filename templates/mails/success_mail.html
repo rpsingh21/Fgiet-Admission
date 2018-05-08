@@ -1,8 +1,5 @@
 {% extends "mails/base_mail.html" %}
 {% load staticfiles %}
-{% load widget_tweaks %}
-{% load crispy_forms_tags %}
-{% load my_filters %}
 {% block content %}
   <p>Congratulation! {{ name }}, Your registration is successfully completed and Registration No is: <b style="color: green">{{ registrationNo }}</b></p>
 {% endblock %}

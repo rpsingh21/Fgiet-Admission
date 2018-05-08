@@ -11,7 +11,7 @@ class Sms():
 
 		self.q=self.s.post(self.url,data=self.cred)
 
-		self.loggedIn=False	
+		self.loggedIn=False
 
 		if "http://site21.way2sms.com/main.action" in self.q.url:
 			# print("Successfully logged in..!")
@@ -49,7 +49,7 @@ class Sms():
 				'Token':self.jsid,
 			        'mobile':mobile_no,
        				 'message':msg,
-			        'msgLen':'129'
+			        'msgLen':'139'
        			     }
 		self.msg_url='http://site21.way2sms.com/smstoss.action'
 		self.q=self.s.post(self.msg_url,data=self.payload)
