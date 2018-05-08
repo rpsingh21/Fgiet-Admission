@@ -210,6 +210,7 @@ class UgOrDiplomaForm(forms.ModelForm):
         }
         help_texts ={
             'ugOrDiplomResultimage':'Image max size is 200 KB',
+            'ugOrDiplomPercentageMarks':'If your final result is not allowanced then you fill last two-year average Details.'
         }
 
     def clean_ugOrDiplomResultimage(self):
