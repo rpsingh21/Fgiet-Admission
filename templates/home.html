@@ -8,6 +8,7 @@
     <div class="myCard mb-3">
         <div class="center border rounded">
             <img class="d-none pt-1 mx-auto d-md-block img-fluid" src="/media/img/logo.png" alt="fgiet logo"/>
+            <p></p>
         </div>
     </div>
     <div class="myCard">
@@ -18,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <form class="text-primary" method="post" enctype="multipart/form-data">
+        <form id ="form_i" class="text-primary" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="card mb-4">
                 <div class="card-header uppercase">
@@ -42,11 +43,22 @@
                 </div>
             </div>
             <div class="centerD pb-4">
-                <button class="btn btn-success" type="submit"> Submit Form </button>
+                <button class="btn btn-success px-5 font-weight-bold" type="submit"> Next</button>
             </div>
         </form>
+        <div id="apply_btn" class="centerD pb-4">
+            <button class="btn btn-success px-4 font-weight-bold" type="submit"> Apply Now </button>
+        </div>
     </div>
 </div>
 {% endblock %}
 {% block js %}
+<script>
+    $("document").ready(function(){
+        $("#apply_btn").click(function(){
+            $("#apply_btn").hide(500);
+            $("#form_i").show(1000);
+        });
+    })
+</script>
 {% endblock %}

@@ -97,3 +97,6 @@ label::first-letter,
 .showdown p{
   text-align: justify;
 }
+#form_i{
+  display:none;
+}
