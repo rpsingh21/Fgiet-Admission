@@ -46,12 +46,12 @@ class CandidateForm(forms.ModelForm):
             'category':'category',
             'dob':'date of birth',
             'mobileNo':'Mobile No',
-            'image':'Upload color Photograph of Applicant ',
-            'signImage':'Upload sigature of Applicant',
+            'image':'Upload scanned photograph of Applicant ',
+            'signImage':'Upload scanned photograph sigature of Applicant',
         }
         help_texts = {
-            'image':'max size of image is 100 KB',
-            'signImage':'max size of signater image is 100 KB',
+            'image':'max size is 100 KB',
+            'signImage':'max size of is 100 KB',
         }
 
     def clean_aadharNo(self):
@@ -114,10 +114,10 @@ class HighSchoolForm(forms.ModelForm):
             'highSchoolRollNo':'roll no',
             'highSchoolBoard':'board',
             'highSchoolPercentageMarks':'Percentage Marks',
-            'highSchoolResultImage':'upload marksheet photograph',
+            'highSchoolResultImage':'Upload marksheet scanned photograph',
         }
         help_texts ={
-            'highSchoolResultImage':'Image max size is  200 KB',
+            'highSchoolResultImage':'max size is  200 KB',
         }
 
     def clean_highSchoolResultImage(self):
@@ -151,10 +151,10 @@ class IntermediateForm(forms.ModelForm):
             'intermediateRollNo':'Roll no',
             'intermediateBoard':'board',
             'intermediatePercentageMarks':'Percentage Marks',
-            'intermediateResultImage':'upload marksheet photograph',
+            'intermediateResultImage':'upload marksheet scanned photograph',
         }
         help_texts ={
-            'intermediateResultImage':'Image max size is 200 KB',
+            'intermediateResultImage':'max size is 200 KB',
         }
 
     def clean_intermediateRollNo(self):
@@ -206,10 +206,10 @@ class UgOrDiplomaForm(forms.ModelForm):
             'ugOrDiplomBoard':'Board',
             'ugOrDiplomBranch':'Branch',
             'ugOrDiplomPercentageMarks':'Percentage Marks',
-            'ugOrDiplomResultimage':'upload marksheet photograph'
+            'ugOrDiplomResultimage':'upload marksheet scanned photograph'
         }
         help_texts ={
-            'ugOrDiplomResultimage':'Image max size is 200 KB',
+            'ugOrDiplomResultimage':'max size is 200 KB',
             'ugOrDiplomPercentageMarks':'If your final result is not announced then you fill last two-year average Details.'
         }
 

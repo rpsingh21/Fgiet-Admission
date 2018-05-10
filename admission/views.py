@@ -83,15 +83,15 @@ def form_view(request,year,course):
                 save_with_key(branchFrom, instance)
 
             # sending sms and email to user
-            mgs ="Congratulation! "+instance.name+", Your registration is successfully completed and Registration No is: "+instance.registrationNo+" For more Information visite website www.fgiet.ac.in ..."
-            send_sms.delay(instance.mobileNo,mgs[:139])
+            mgs ="Dear! "+instance.name+", You're registered successfully and Reg No is "+instance.registrationNo+". For more Information visite website http://www.fgiet.ac.in"
+            send_sms.delay(instance.mobileNo,mgs)
             convert_thumbnail.delay(instance.image.path, (420,560))
             convert_thumbnail.delay(instance.signImage.path,(560, 160))
             mail_context = {
                 'name':instance.name,
                 'registrationNo':instance.registrationNo
             }
-            send_email.delay('FGIET Adnission registration','', 'mails/success_mail.html', mail_context,None,[instance.email])
+            send_email.delay('FGIET Admission Registration','', 'mails/success_mail.html', mail_context,None,[instance.email])
 
             # return responce 
             request.session['pk'] = instance.id
