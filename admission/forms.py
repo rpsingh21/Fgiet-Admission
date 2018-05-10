@@ -39,9 +39,9 @@ class CandidateForm(forms.ModelForm):
         labels = {
             "applyYear":"Apply Year",
             "course":"Apply Course",
-            "name": "Name Of Applicant",
-            "aadharNo" : "Aadhar No of Applicant",
-            "fatherName":"father name of Applicant",
+            "name": "Name",
+            "aadharNo" : "Aadhar No. ",
+            "fatherName":"father's Name",
             'guardianIncome':'Guardian Income',
             'category':'category',
             'dob':'date of birth',
