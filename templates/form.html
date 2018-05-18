@@ -189,6 +189,11 @@
         uiLibrary: 'bootstrap4',
         endDate:'0d'
     });
+    $('document').ready(function(){
+        $("#id_dob").click(function(){
+            $(".gj-datepicker").find(".border-left-0").click();
+        })
+    })
 </script>
 <script>
     var year="{{ type.year }}";

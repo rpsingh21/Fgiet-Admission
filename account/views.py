@@ -33,7 +33,6 @@ def adminTableView(request):
     if not request.user.is_superuser:
         if not request.user.profile.branch:
             raise PermissionDenied
-        print(request.user.profile.branch)
         instances = instances.filter(course=request.user.profile.branch)
     return render(request, 'account/table.html',{'instances':instances})
 
