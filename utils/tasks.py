@@ -10,7 +10,6 @@ from fgietAdmission.secret import smsApi
 @task(name="send_simple_sms")
 def send_sms(phone, message):
     url = "https://www.pay2all.in/web-api/send_sms?api_token="+smsApi['api_token']+"&senderid="+smsApi['senderid']+"&number="+phone+"&message="+message+"&route=4"
-    print(url)
     response = get(url)
     return response.json()
 

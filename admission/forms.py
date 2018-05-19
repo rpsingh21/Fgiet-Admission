@@ -52,6 +52,7 @@ class CandidateForm(forms.ModelForm):
         help_texts = {
             'image':'max size is 100 KB',
             'signImage':'max size of is 100 KB',
+            'dob':'mm/dd/yyyy'
         }
 
     def clean_aadharNo(self):

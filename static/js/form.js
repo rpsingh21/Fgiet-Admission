@@ -50,12 +50,5 @@ $("document").ready(function(){
     $("#id_intermediateRollNo").attr('type','number');
     $("#id_ugOrDiplomRollNo").attr('type','number');
     $("#id_upseeRollNo").attr('type','number');
-
     $("input[type=select").addClass('custom-select');
-
-    $("#form_submit").click(function(){
-        // setTimeout(function(){
-        //     $('#form_model').modal('show');
-        // },300)
-    });
 });
