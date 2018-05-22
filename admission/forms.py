@@ -244,13 +244,6 @@ class UpseeForm(forms.ModelForm):
             'upseeRollNo':'Applicant Upsee Roll No.'
         }
 
-    def clean_upseeRollNo(self):
-        upseeRollNo = self.cleaned_data['upseeRollNo']
-        if upseeRollNo.isdigit():
-            return upseeRollNo
-        raise forms.ValidationError('Enter valid Roll no.')
-
-
 class BranchFrom(forms.ModelForm):
 
     class Meta:
