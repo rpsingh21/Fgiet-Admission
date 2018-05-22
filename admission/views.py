@@ -52,7 +52,7 @@ def form_view(request,year,course):
         vaild = True
         if not (candidateForm.is_valid() and highSchoolForm.is_valid() and upseeForm.is_valid):
             vaild = False
-        if not year=='2' and course=='BTech':
+        if not (year=='2' and course=='BTech'):
             if not intermediateForm.is_valid():
                 vaild = False
         if not course == 'MCA':
@@ -73,7 +73,7 @@ def form_view(request,year,course):
             temp = None
             if not (course == 'BTech' and year == '2'):
                 temp = save_with_key(intermediateForm, instance)
-                if course == 'BTech' and year == '1':
+                if (course == 'BTech' and year == '1'):
                     pcm = pcmForm.save(commit=False)
                     pcm.intermediate = temp
                     pcm.save()

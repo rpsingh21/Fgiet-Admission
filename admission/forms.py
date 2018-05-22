@@ -183,9 +183,9 @@ class PCMForm(forms.ModelForm):
             'chemistry',
         ]
         labels = {
-            'math':'Percentage marks in Math',
-            'physics':'Percentage marks in physics',
-            'chemistry':'Percentage marks in chemistry'
+            'math':'marks in Math',
+            'physics':'marks in physics',
+            'chemistry':'marks in chemistry'
         }
 
 
