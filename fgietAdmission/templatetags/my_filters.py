@@ -14,3 +14,7 @@ def is_first_year(value):
 @register.filter(name='is_mca')
 def is_mca(value):
     return value['course'] == 'MCA'
+
+@register.filter(name='is_btech_first_year')
+def is_btech_first_year(instance):
+    return instance.applyYear == '1' and instance.course == 'BTech'

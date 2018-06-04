@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load my_filters %}
 {% block title %}{{ instance.name|title }} Form{% endblock %}
 {% block content %}
 <div class="container">
@@ -100,6 +101,7 @@
                     <td>{{ instance.inter.intermediateRollNo }}</td>
                     <td>{{ instance.inter.intermediatePercentageMarks }}</td>
                 </tr>
+                {% if not instance|is_btech_first_year %}
                 <tr>
                     <th scope="row">3</th>
                     <td>Ug / Diploma</td>
@@ -108,6 +110,7 @@
                     <td>{{ instance.ug.ugOrDiplomRollNo }}</td>
                     <td>{{ instance.ug.ugOrDiplomPercentageMarks }}</td>
                 </tr>
+                {% endif %}
                 {% if instance.course == 'BTech' %}
                 <tr>
                     <th colspan="6" class="text-center text-success">YOUR BRANCH PREFERANCES</th>
