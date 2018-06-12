@@ -152,7 +152,14 @@
             {% endif %}
 
             <!-- Appicant upsee details -->
-            <div class="card mb-4">
+            <div class="container mb-2">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="upsee_is"> Are you appear in the upsee examination ?
+                    </label>
+                </div>
+            </div>
+            <div class="card mb-4" id="upsee_div">
                 <div class="card-header uppercase">
                     <b>Appicant upsee details</b>
                 </div>
@@ -195,6 +202,21 @@
             maxDate: '-8y'
         });
     });
+    $("document").ready(function(){
+        $("#upsee_div").hide()
+        $("#upsee_is").change(function(){
+            if($(this).is(":checked")) {
+                $("#upsee_div").show(250)
+                $("#id_upseeRollNo").prop('required',true);
+                $("#id_rank").prop('required',true)
+            }
+            else{
+                $("#upsee_div").hide(250)
+                $("#id_upseeRollNo").prop('required',false);
+                $("#id_rank").prop('required',false)
+            }
+        })
+    })
 </script>
 <script>
     var year="{{ type.year }}";
