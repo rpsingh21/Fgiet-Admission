@@ -55,7 +55,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries':{
-                'app_filters': 'fgietAdmission.templatetags.my_filters',
+                'my_filters': 'fgietAdmission.templatetags.my_filters',
             }
         },
     },

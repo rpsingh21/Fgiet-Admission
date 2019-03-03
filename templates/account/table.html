@@ -15,6 +15,7 @@
                     <tr class="capitalize text-center">
                         <th rowspan="2">Reg. No</th>
                         <th colspan="4">Apply For</th>
+                        <th colspan="4">Branch Preference</th>
                         <th colspan="8">Applicant Persional Details</th>
                         <th colspan="4">high school details</th>
                         <th colspan="7">Intermediate details</th>
@@ -27,6 +28,12 @@
                         <th scope="col">Year</th>
                         <th scope="col">Cat.</th>
                         <th class="min" scope="col">Apply Date,Time</th>
+                    
+                        <!-- Branch preferrence -->
+                        <th scope="col">1</th>
+                        <th scope="col">2</th>
+                        <th scope="col">3</th>
+                        <th scope="col">4</th>
 
                         <!-- persional detail -->
                         <th class="min" scope="col">Applicant Image</th>
@@ -76,6 +83,12 @@
                         <td scope="col">{{ instance.applyYear }}</td>
                         <td scope="col">{{ instance.category }}</td>
                         <td scope="col">{{ instance.timeStamp }}</td>
+
+                        <!-- Branch preference -->
+                        <td scope="col">{{ instance.cbranch.first }}</td>
+                        <td scope="col">{{ instance.cbranch.second }}</td>
+                        <td scope="col">{{ instance.cbranch.third }}</td>
+                        <td scope="col">{{ instance.cbranch.fourth }}</td>
 
                         <!-- pername details -->
                         <td>
