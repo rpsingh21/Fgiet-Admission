@@ -30,7 +30,7 @@ gender_choices = (
     ('Unspecified','Unspecified')
 )
 
-passing_year = [(str(i),str(i)) for i in range(2000,2019)]
+passing_year = [(str(i),str(i)) for i in range(2008, 2020)]
 
 # ImageLoad Location
 def upload_location(instance, filename):

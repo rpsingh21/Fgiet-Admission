@@ -40,14 +40,14 @@ class CandidateForm(forms.ModelForm):
             "applyYear":"Apply Year",
             "course":"Apply Course",
             "name": "Name",
-            "aadharNo" : "Aadhar No. ",
-            "fatherName":"father's Name",
+            "aadharNo" : "Aadhar Number ",
+            "fatherName":"Father's Name",
             'guardianIncome':'Guardian Income',
-            'category':'category',
-            'dob':'date of birth',
+            'category':'Category',
+            'dob':'Date of Birth',
             'mobileNo':'Mobile No',
-            'image':'Upload scanned photograph of Applicant ',
-            'signImage':'Upload scanned photograph sigature of Applicant',
+            'image':'Upload Scanned Photograph of Candidate',
+            'signImage':'Upload Scanned Sigature',
         }
         help_texts = {
             'image':'max size is 100 KB',
@@ -71,7 +71,7 @@ class CandidateForm(forms.ModelForm):
             signImage = self.cleaned_data['signImage']
             size = getattr(signImage, '_size', 0)
             if size > settings.MAX_UPLOAD_SIZE:
-                raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
+                raise forms.ValidationError("Please keep image size under %s. Current filesize %s" % (
                     filesizeformat(settings.MAX_UPLOAD_SIZE//2), filesizeformat(size)))
             return signImage
 
@@ -79,7 +79,7 @@ class CandidateForm(forms.ModelForm):
             image = self.cleaned_data['image']
             size = getattr(image, '_size', 0)
             if size > settings.MAX_UPLOAD_SIZE:
-                raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
+                raise forms.ValidationError("Please keep image size under %s. Current filesize %s" % (
                     filesizeformat(settings.MAX_UPLOAD_SIZE//2), filesizeformat(size)))
             return image
 
@@ -111,11 +111,11 @@ class HighSchoolForm(forms.ModelForm):
             'highSchoolResultImage',
         ]
         labels = {
-            'highSchoolPassingYear':'year of passing',
-            'highSchoolRollNo':'roll no',
-            'highSchoolBoard':'board',
+            'highSchoolPassingYear':'Passing Year',
+            'highSchoolRollNo':'Roll No',
+            'highSchoolBoard':'Board',
             'highSchoolPercentageMarks':'Percentage Marks',
-            'highSchoolResultImage':'Upload marksheet scanned photograph',
+            'highSchoolResultImage':'Upload Scanned Marksheet',
         }
         help_texts ={
             'highSchoolResultImage':'max size is  200 KB',
@@ -125,7 +125,7 @@ class HighSchoolForm(forms.ModelForm):
             image = self.cleaned_data['highSchoolResultImage']
             size = getattr(image, '_size', 0)
             if size > settings.MAX_UPLOAD_SIZE:
-                raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
+                raise forms.ValidationError("Please keep image size under %s. Current filesize %s" % (
                     filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(size)))
             return image
 
@@ -148,11 +148,11 @@ class IntermediateForm(forms.ModelForm):
             'intermediateResultImage',
         ]
         labels = {
-            'intermediatePassingYear':'passing of Year',
-            'intermediateRollNo':'Roll no',
-            'intermediateBoard':'board',
+            'intermediatePassingYear':'Passing Year',
+            'intermediateRollNo':'Roll No',
+            'intermediateBoard':'Board',
             'intermediatePercentageMarks':'Percentage Marks',
-            'intermediateResultImage':'upload marksheet scanned photograph',
+            'intermediateResultImage':'Upload scanned Marksheet',
         }
         help_texts ={
             'intermediateResultImage':'max size is 200 KB',
@@ -168,7 +168,7 @@ class IntermediateForm(forms.ModelForm):
             image = self.cleaned_data['intermediateResultImage']
             size = getattr(image, '_size', 0)
             if size > settings.MAX_UPLOAD_SIZE:
-                raise forms.ValidationError("Please keep resume size under %s. Current filesize %s" % (
+                raise forms.ValidationError("Please keep image size under %s. Current filesize %s" % (
                     filesizeformat(settings.MAX_UPLOAD_SIZE), filesizeformat(size)))
             return image
 
@@ -183,9 +183,9 @@ class PCMForm(forms.ModelForm):
             'chemistry',
         ]
         labels = {
-            'math':'marks in Math',
-            'physics':'marks in physics',
-            'chemistry':'marks in chemistry'
+            'math':'Marks in Math',
+            'physics':'Marks in Physics',
+            'chemistry':'marks in Chemistry'
         }
 
 
@@ -202,12 +202,12 @@ class UgOrDiplomaForm(forms.ModelForm):
             'ugOrDiplomResultimage'
         ]
         labels = {
-            'ugOrDiplompassingYear':'Passing of year',
-            'ugOrDiplomRollNo':'roll no',
+            'ugOrDiplompassingYear':'Passing year',
+            'ugOrDiplomRollNo':'Roll No',
             'ugOrDiplomBoard':'Board',
             'ugOrDiplomBranch':'Branch',
             'ugOrDiplomPercentageMarks':'Percentage Marks',
-            'ugOrDiplomResultimage':'upload marksheet scanned photograph'
+            'ugOrDiplomResultimage':'Upload Scanned Marksheet'
         }
         help_texts ={
             'ugOrDiplomResultimage':'max size is 200 KB',
@@ -239,9 +239,9 @@ class UpseeForm(forms.ModelForm):
             'catRank'
         ]
         labels = {
-            'rank':'Applicant Upsee Rank',
-            'catRank':'Applicant category rank',
-            'upseeRollNo':'Applicant Upsee Roll No.'
+            'rank':'Upsee Rank',
+            'catRank':'Category Rank',
+            'upseeRollNo':'Upsee Roll No.'
         }
 
 class BranchFrom(forms.ModelForm):
@@ -255,8 +255,8 @@ class BranchFrom(forms.ModelForm):
             'fourth'
         ]
         labels = {
-            'first':'first prefrance',
-            'second':'second prefrance',
-            'third':'third prefrance',
-            'fourth':'fourth prefrance'
+            'first':'First Prefrance',
+            'second':'Second Prefrance',
+            'third':'Third Prefrance',
+            'fourth':'Fourth Prefrance'
         }

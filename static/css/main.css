@@ -9,8 +9,6 @@ body {
   min-height: 100%;
   padding-bottom: 6rem;
   background-color: #f8f9fa;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  /* background-attachment: fixed; */
 }
 
 .navbar {
@@ -99,4 +97,12 @@ label::first-letter,
 }
 #form_i{
   display:none;
+}
+
+.form-group label{
+  text-transform: capitalize;
+}
+
+form{
+  font-family: serif;
 }
