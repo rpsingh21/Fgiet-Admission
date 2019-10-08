@@ -1,17 +1,19 @@
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'j2b_z(*4w+#)t^nz3)0n3da(tcj&3##klo73m76(x7%3z)b%85n!')
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY', 'j2b_z(*4w+#)t^nz3)0n3da(tcj&3##klo73m76(x7%3z)b%85n!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = eval(os.environ.get('DEBUG'))
 
-ALLOWED_HOSTS = ['www.fgiet.in','fgiet.in']
+ALLOWED_HOSTS = ['www.fgiet.in', 'fgiet.in']
 if DEBUG:
-    ALLOWED_HOSTS['*']
+    ALLOWED_HOSTS = ['*']
 
 # Application definition
 
