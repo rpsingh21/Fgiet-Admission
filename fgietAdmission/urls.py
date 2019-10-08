@@ -21,13 +21,16 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^account/', include('account.urls', namespace= 'account')),
-    url(r'test/',TemplateView.as_view(template_name='mails/success_mail.html',)),
-    url(r'', include('admission.urls', namespace= 'admission')),
+    url(r'^account/', include('account.urls', namespace='account')),
+    url(r'test/', TemplateView.as_view(
+        template_name='mails/success_mail.html',)),
+    url(r'', include('admission.urls', namespace='admission')),
 ]
 
 if settings.DEBUG is True:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = 'FGIET Admission Cell'
