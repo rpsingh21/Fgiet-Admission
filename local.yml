@@ -1,0 +1,46 @@
+version: "3"
+
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./docker/django/Dockerfile
+    image: fgiet_admission
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env/local.env
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./docker/postgresql/Dockerfile
+    image: fgiet_admission_postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+      - local_postgres_data_backups:/backups
+    env_file:
+      - ./.env/local.env
+
+  redis:
+    image: redis:5.0-alpine
+
+  celeryworker:
+    <<: *django
+    image: fgiet_admission_celeryworker
+    depends_on:
+      - redis
+      - postgres
+    ports: []
+    command: /start-celeryworker

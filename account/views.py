@@ -1,16 +1,16 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import(
+from django.contrib.auth import (
     authenticate,
-    get_user_model,
     login,
     logout,
 )
-from django.http import HttpResponseRedirect, HttpResponse, HttpResponseForbidden
+from django.http import HttpResponseRedirect
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 
 from .forms import LoginForm
 from admission.models import Candidate
+
 
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -27,6 +27,7 @@ def login_view(request):
     next = request.META.get('HTTP_REFERER')
     return render(request, "account/loginForm.html", {"title": "Admin Login", "form": form})
 
+
 @login_required(login_url='/account/login/')
 def adminTableView(request):
     instances = Candidate.objects.all().order_by('-timeStamp')
@@ -34,7 +35,8 @@ def adminTableView(request):
         if not request.user.profile.branch:
             raise PermissionDenied
         instances = instances.filter(course=request.user.profile.branch)
-    return render(request, 'account/table.html',{'instances':instances})
+    return render(request, 'account/table.html', {'instances': instances})
+
 
 def logout_view(request):
     logout(request)

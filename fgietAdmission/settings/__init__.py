@@ -1,7 +1,2 @@
-from .base import *
-from .prod import *
-
-try:
-    from .local import *
-except:
-    pass
+from .base import *  # noqa F401
+from .prod import *  # noqa F401

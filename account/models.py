@@ -5,14 +5,16 @@ from django.dispatch import receiver
 
 
 course_choices = (
-    ('BTech','Bachelor of Technology'),
-    ('MCA','Master of Computer Application')
+    ('BTech', 'Bachelor of Technology'),
+    ('MCA', 'Master of Computer Application')
 )
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=16, blank=True)
-    branch = models.CharField(max_length=30, blank=True, choices=course_choices)
+    branch = models.CharField(
+        max_length=30, blank=True, choices=course_choices)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -25,6 +27,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
 
 class SiteContent(models.Model):
     name = models.CharField(max_length=32, unique=True)

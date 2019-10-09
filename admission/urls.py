@@ -10,8 +10,9 @@ from .views import (
 
 urlpatterns = [
     url(r'^$', home_view, name='home'),
-    url(r'^form/(?P<year>[\w-]+)/(?P<course>[\w-]+)/$', form_view, name='form'),
-    url(r'^success/$',success_view, name='success'),
-    url(r'^applicant/(?P<id>\d+)$',application_view, name="application"),
-    url(r'^fqs/$',fqs_view,name='fqs')
+    url(r'^form/(?P<year>[\w-]+)/(?P<course>[\w-]+)/$',
+        form_view, name='form'),
+    url(r'^success/$', success_view, name='success'),
+    url(r'^applicant/(?P<id>\d+)$', application_view, name="application"),
+    url(r'^fqs/$', fqs_view, name='fqs')
 ]
