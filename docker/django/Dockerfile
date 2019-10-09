@@ -20,6 +20,11 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r /requirements.txt
 
+# Celery config
+COPY ./docker/django/celery/start-worker /start-celeryworker
+RUN sed -i 's/\r$//g' /start-celeryworker
+RUN chmod +x /start-celeryworker
+
 RUN mkdir app
 WORKDIR /app
 COPY . /app

@@ -44,12 +44,3 @@ services:
       - postgres
     ports: []
     command: /start-celeryworker
-
-  celerybeat:
-    <<: *django
-    image: fgiet_admission_celerybeat
-    depends_on:
-      - redis
-      - postgres
-    ports: []
-    command: /start-celerybeat

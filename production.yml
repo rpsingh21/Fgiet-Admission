@@ -44,12 +44,3 @@ services:
       - mailhog
     ports: []
     command: /start-celeryworker
-
-  celerybeat:
-    <<: *django
-    image: student_management_celerybeat
-    depends_on:
-      - redis
-      - postgres
-    ports: []
-    command: /start-celerybeat
