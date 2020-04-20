@@ -11,7 +11,12 @@ defaultEntryPoints = ["http", "https"]
   # https is the default
   [entryPoints.https]
   address = ":443"
-    [entryPoints.https.tls]
+  compress = true
+    [entryPoints.https.redirect]
+    regex = "^https://fgiet.in/(.*)"
+    replacement = "https://www.fgiet.in/$1"
+    permanent = true
+  [entryPoints.https.tls]
 
 # Enable ACME (Let's Encrypt): automatic SSL
 [acme]
@@ -38,4 +43,4 @@ OnHostRule = true
     [frontends.django.headers]
       HostsProxyHeaders = ['X-CSRFToken']
     [frontends.django.routes.dr1]
-      rule = "Host:fgiet.in"
+      rule = "Host:www.fgiet.in,fgiet.in"
