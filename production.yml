@@ -9,38 +9,51 @@ services:
     build:
       context: .
       dockerfile: ./docker/django/Dockerfile
-    image: fgietAdmission
+    image: fgiet_admission
     depends_on:
       - postgres
     volumes:
       - .:/app
     env_file:
-      - ./.envs/.local/.django
-      - ./.envs/.local/.postgres
+      - ./.env/local.env
     ports:
       - "8000:8000"
+    stdin_open: true
+    tty: true
     command: /start
 
   postgres:
     build:
       context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: fgietAdmission_postgres
+      dockerfile: ./docker/postgresql/Dockerfile
+    image: fgiet_admission_postgres
     volumes:
       - local_postgres_data:/var/lib/postgresql/data
       - local_postgres_data_backups:/backups
     env_file:
-      - ./.envs/.local/.postgres
+      - ./.env/local.env
 
   redis:
-    image: redis:5.0
+    image: redis:5.0-alpine
 
   celeryworker:
     <<: *django
-    image: fgietAdmission_celeryworker
+    image: fgiet_admission_celeryworker
     depends_on:
       - redis
       - postgres
-      - mailhog
     ports: []
     command: /start-celeryworker
+
+  traefik:
+    build:
+      context: .
+      dockerfile: ./docker/traefik/Dockerfile
+    image: traefik
+    depends_on:
+      - django
+    volumes:
+      - production_traefik:/etc/traefik/acme
+    ports:
+      - "0.0.0.0:80:80"
+      - "0.0.0.0:443:443"
