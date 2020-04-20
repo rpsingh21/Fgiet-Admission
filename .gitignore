@@ -104,6 +104,7 @@ ENV/
 /site
 
 # mypy
+CandidateImages/
 .mypy_cache/
 .vscode/
 secret.py
