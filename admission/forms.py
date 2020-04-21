@@ -263,8 +263,8 @@ class BranchFrom(forms.ModelForm):
             'fourth'
         ]
         labels = {
-            'first': 'First Prefrance',
-            'second': 'Second Prefrance',
-            'third': 'Third Prefrance',
-            'fourth': 'Fourth Prefrance'
+            'first': 'First Preference',
+            'second': 'Second Preference',
+            'third': 'Third Preference',
+            'fourth': 'Fourth Preference'
         }
