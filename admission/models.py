@@ -30,7 +30,7 @@ gender_choices = (
     ('Unspecified', 'Unspecified')
 )
 
-passing_year = [(str(i), str(i)) for i in range(2008, 2020)]
+passing_year = [(str(i), str(i)) for i in range(2008, 2021)]
 
 
 # ImageLoad Location

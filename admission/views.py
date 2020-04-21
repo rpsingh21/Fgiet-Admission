@@ -77,7 +77,7 @@ def form_view(request, year, course):
                 vaild = False
         if vaild:
             instance = candidateForm.save()
-            instance.registrationNo = "19187"+"{:03}".format(instance.id)
+            instance.registrationNo = "20187"+"{:03}".format(instance.id)
             instance.save()
             save_with_key(highSchoolForm, instance)
             save_with_key(upseeForm, instance)
@@ -106,7 +106,8 @@ def form_view(request, year, course):
                 'registrationNo': instance.registrationNo
             }
             send_email.delay('FGIET Admission Registration', '',
-                             'mails/success_mail.html', mail_context, None, [instance.email])
+                             'mails/success_mail.html',
+                             mail_context, None, [instance.email])
 
             # return responce
             request.session['pk'] = instance.id
