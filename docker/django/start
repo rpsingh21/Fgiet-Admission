@@ -5,4 +5,5 @@ set -o pipefail
 set -o nounset
 
 python manage.py migrate
-gunicorn fgietAdmission.wsgi:application -b 0.0.0.0:8000 --workers 3
+python /app/manage.py collectstatic --noinput
+/usr/local/bin/gunicorn fgietAdmission.wsgi:application -b 0.0.0.0:8000 --chdir=/app
