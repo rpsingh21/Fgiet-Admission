@@ -77,7 +77,7 @@ def form_view(request, year, course):
                 vaild = False
         if vaild:
             instance = candidateForm.save()
-            instance.registrationNo = "20187"+"{:03}".format(instance.id)
+            instance.registrationNo = "21187"+"{:04}".format(instance.id)
             instance.save()
             save_with_key(highSchoolForm, instance)
             save_with_key(upseeForm, instance)

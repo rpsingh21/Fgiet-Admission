@@ -16,3 +16,4 @@ psycopg2==2.8.3
 requests==2.22.0
 redis==3.3.8
 beautifulsoup4==4.8.1
+django-prometheus==1.0.4
