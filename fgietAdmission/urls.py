@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'test/', TemplateView.as_view(
         template_name='mails/success_mail.html',)),
     url(r'', include('admission.urls', namespace='admission')),
+    url(r'', include('django_prometheus.urls')),
 ]
 
 if settings.DEBUG is True:
